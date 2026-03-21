@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI News Digest</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans CJK JP", sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      min-width: 220px;
+      background: #161b22;
+      border-right: 1px solid #30363d;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      padding: 16px;
+      font-size: 14px;
+      color: #8b949e;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .sidebar ul { list-style: none; padding: 8px; }
+
+    .sidebar li {
+      padding: 10px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #c9d1d9;
+      transition: background 0.15s;
+    }
+
+    .sidebar li:hover { background: #21262d; }
+    .sidebar li.active { background: #1f6feb33; color: #58a6ff; font-weight: 600; }
+
+    .sidebar li .day {
+      font-size: 11px;
+      color: #8b949e;
+      margin-top: 2px;
+    }
+
+    /* Main content */
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 32px 48px;
+    }
+
+    .main .empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: #484f58;
+      font-size: 16px;
+    }
+
+    /* Markdown styles */
+    .content h1 { font-size: 28px; color: #f0f6fc; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #30363d; }
+    .content h2 { font-size: 20px; color: #f0f6fc; margin-top: 28px; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #21262d; }
+    .content h3 { font-size: 16px; color: #e6edf3; margin-top: 20px; margin-bottom: 8px; }
+    .content p { line-height: 1.7; margin-bottom: 8px; }
+    .content ul { padding-left: 20px; margin-bottom: 12px; }
+    .content li { line-height: 1.7; margin-bottom: 4px; }
+    .content hr { border: none; border-top: 1px solid #30363d; margin: 24px 0; }
+    .content a { color: #58a6ff; text-decoration: none; }
+    .content a:hover { text-decoration: underline; }
+    .content code { background: #161b22; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #e6edf3; }
+    .content strong { color: #e6edf3; }
+    .content em { color: #8b949e; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      body { flex-direction: column; }
+      .sidebar { width: 100%; min-width: auto; max-height: 160px; border-right: none; border-bottom: 1px solid #30363d; }
+      .main { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <h2>AI News</h2>
+    <ul id="file-list"></ul>
+  </nav>
+  <main class="main">
+    <div id="content" class="content">
+      <div class="empty">左のリストから日付を選択してください</div>
+    </div>
+  </main>
+
+  <script>
+    const DAYS = ['日', '月', '火', '水', '木', '金', '土'];
+
+    async function init() {
+      const res = await fetch('files.json');
+      const files = await res.json();
+      const list = document.getElementById('file-list');
+
+      files.forEach((file, i) => {
+        const match = file.match(/ai-news-(\d{4}-\d{2}-\d{2})/);
+        if (!match) return;
+        const date = new Date(match[1] + 'T00:00:00');
+        const label = match[1];
+        const day = DAYS[date.getDay()];
+
+        const li = document.createElement('li');
+        li.innerHTML = `${label}<div class="day">${day}曜日</div>`;
+        li.addEventListener('click', () => loadFile(file, li));
+        list.appendChild(li);
+
+        if (i === 0) loadFile(file, li);
+      });
+    }
+
+    async function loadFile(file, li) {
+      document.querySelectorAll('.sidebar li').forEach(el => el.classList.remove('active'));
+      li.classList.add('active');
+
+      const res = await fetch(file);
+      const md = await res.text();
+      document.getElementById('content').innerHTML = marked.parse(md);
+    }
+
+    init();
+  </script>
+</body>
+</html>
