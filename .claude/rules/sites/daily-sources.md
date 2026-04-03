@@ -12,6 +12,12 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 
 `learn.microsoft.com` 配下のソースはCloudflare未使用のためWebFetchが安定する傾向がある。
 
+## 優先度の分類基準
+
+- **最優先**: M365 Copilot / Copilot Studio / Power Platform の公式一次情報源。毎日確認必須
+- **高優先**: 個別製品ブログ・計画系ドキュメント・コミュニティ情報・トレンド。毎日〜週2回確認
+- **週次確認**: 速報性より実装パターンの収集が目的のソース。週1回確認
+
 ---
 
 ## 最優先
@@ -44,7 +50,44 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 頻度: 毎日確認
 - 備考: Copilot Studio カテゴリの記事を対象とする。learn.microsoft.com の What's New とは別軸で、背景説明・戦略的文脈が含まれる
 
+### Power Platform Blog
+- URL: https://www.microsoft.com/en-us/power-platform/blog/
+- 代替URL（子カテゴリ）:
+  - Power Apps: https://www.microsoft.com/en-us/power-platform/blog/power-apps/
+  - Power Automate: https://www.microsoft.com/en-us/power-platform/blog/power-automate/
+- 検索キーワード（WebSearch用）: `Power Platform blog update 2026`
+- 取得方法: WebFetch → WebSearch
+- 注目点: 月次「What's New in Power Platform」Feature Update記事が最重要。Power Apps/Power Automate/Copilot Studio横断の更新情報、ガバナンス・ライセンス変更、コミュニティ情報
+- 頻度: 毎日確認
+- 備考: 親ページで全体を確認後、子カテゴリの個別記事も高優先セクションで別途監視する
+
+### M365 Message Center Archive
+- URL: https://mc.merill.net/
+- 検索キーワード（WebSearch用）: `Microsoft 365 Message Center Copilot Power Platform 2026`
+- 取得方法: WebFetch → WebSearch
+- 注目点: テナント管理者向け変更通知のアーカイブ。Roadmapが「予定」、Release Notesが「リリース済」に対し、こちらは「展開中の変更と影響範囲」を扱う
+- 頻度: 毎日確認
+- 備考: 非公式の個人運営アーカイブ（Merill Fernando氏）。公式Message Center（admin.microsoft.com）とは差分が生じる可能性あり。テナント管理者権限不要で閲覧できる点が利点
+
+---
+
 ## 高優先
+
+### Power Automate Blog
+- URL: https://www.microsoft.com/en-us/power-platform/blog/power-automate/
+- 検索キーワード（WebSearch用）: `Power Automate blog update new feature 2026`
+- 取得方法: WebFetch → WebSearch
+- 注目点: Power Automate固有の新機能（クラウドフロー、デスクトップフロー、Process Mining、Computer Use Agent）。月次更新記事あり
+- 頻度: 毎日確認
+- 備考: Power Platform Blogの子カテゴリ。JCB案件のPower Automate研修に直結する情報源
+
+### Power Apps Blog
+- URL: https://www.microsoft.com/en-us/power-platform/blog/power-apps/
+- 検索キーワード（WebSearch用）: `Power Apps blog update new feature 2026`
+- 取得方法: WebFetch → WebSearch
+- 注目点: Power Apps固有の新機能（モダンコントロール、コードアプリGA、vibe.powerapps.com（AIコードアプリビルダー、Public Preview）、MCP Server連携）。月次更新記事あり
+- 頻度: 毎日確認
+- 備考: Power Platform Blogの子カテゴリ。JCB案件のPower Apps研修に直結する情報源
 
 ### Copilot Studio Release Wave（計画機能一覧）
 - URL: https://learn.microsoft.com/en-us/power-platform/release-plan/2026wave1/microsoft-copilot-studio/planned-features
@@ -53,6 +96,14 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 注目点: 半期ごとの計画機能リスト。Preview/GA予定時期が一覧化されている
 - 頻度: 週1〜2回確認（更新頻度が低いため）
 - 備考: Wave切替時（4月・10月頃）にURLパスが変わる（`2026wave1` → `2026wave2` 等）。WebFetchが404を返した場合はWebSearchで最新Waveページを特定すること
+
+### Power Platform Release Wave（全体版）
+- URL: https://learn.microsoft.com/en-us/power-platform/release-plan/2026wave1/
+- 検索キーワード（WebSearch用）: `Power Platform release wave 2026 planned features`
+- 取得方法: WebFetch → WebSearch
+- 注目点: Copilot Studio以外を含むPower Platform全体の計画機能一覧。Power Apps/Power Automate/Dataverse/Power Pages/ガバナンス・管理のRelease Wave
+- 頻度: 週1〜2回確認（更新頻度が低いため）
+- 備考: Copilot Studio Release Waveと同じタイミングでWave切替が発生する。WebFetchが404を返した場合はWebSearchで最新Waveページを特定すること
 
 ### Power Platform Released Versions
 - URL: https://learn.microsoft.com/en-us/power-platform/released-versions/
@@ -68,36 +119,6 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 頻度: 毎日確認
 - 備考: RSSフィードは存在するが robots.txt でブロックされておりWebFetch/curl不可
 
-### Anthropic News
-- URL: https://www.anthropic.com/news
-- 代替URL: https://www.anthropic.com/research
-- 検索キーワード（WebSearch用）: `Anthropic Claude release announcement 2026`
-- 取得方法: WebFetch → WebSearch
-- 注目点: Claude新モデルリリース、API変更、新機能発表、料金変更
-- 頻度: 毎日確認
-
-### Claude Support / Release Notes
-- URL: https://support.claude.com
-- 検索キーワード（WebSearch用）: `Claude AI update changelog new feature 2026`
-- 取得方法: WebFetch → WebSearch
-- 注目点: Claude製品のリリースノート、既知の問題、機能変更
-- 頻度: 毎日確認
-
-### Cursor Changelog
-- URL: https://cursor.com/changelog
-- 検索キーワード（WebSearch用）: `Cursor AI editor changelog update 2026`
-- 取得方法: WebFetch → WebSearch
-- 注目点: AI統合開発環境の新機能、モデル対応状況、エディタ機能改善
-- 頻度: 毎日確認
-- 備考: 2026-04-02時点でWebFetch成功（403解消）。再発時は `cursor-changelog.com/feed`（サードパーティRSS）への切り替えを検討
-
-### Devin Documentation
-- URL: https://docs.devin.ai
-- 検索キーワード（WebSearch用）: `Devin AI agent update new feature 2026`
-- 取得方法: WebFetch → WebSearch
-- 注目点: AIソフトウェアエンジニアエージェントの機能追加、API変更、利用ガイド更新
-- 頻度: 毎日確認
-
 ### X (トレンド検索)
 - 取得方法: WebSearch
 - 検索キーワード例:
@@ -105,7 +126,32 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
   - `"Copilot Studio new feature"`
   - `"M365 Copilot release"`
   - `"Copilot Studio agent"`
+  - `"Power Platform update"`
+  - `"Power Automate new feature"`
+  - `"Power Apps new feature"`
   - `"Microsoft Copilot 新機能"`
   - `"Copilot Studio 活用"`
-- 注目点: 新機能のバズ、導入企業の知見共有、不具合報告
+  - `"Power Platform 活用"`
+  - `"Power Automate 新機能"`
+  - `"Power Apps 新機能"`
+- 注目点: 新機能のバズ、導入企業の知見共有、不具合報告、日本語コミュニティの反応
 - 頻度: 毎日確認
+
+---
+
+## 週次確認
+
+### Microsoft 365 & Power Platform Community
+- URL: https://pnp.github.io/
+- 検索キーワード（WebSearch用）: `Microsoft 365 Power Platform community call 2026`
+- 取得方法: WebSearch
+- 注目点: コミュニティコール（デモ・実装例）、PnPサンプル、実務ユースケース
+- 頻度: 週1回確認
+- 備考: 速報性よりも実装パターンの収集が目的。コミュニティコールは隔週開催
+
+---
+
+## メンテナンスノート
+
+- 本ファイルのソース追加・削除時は `fetch-flow.md` 側のフォールバック定義も合わせて更新すること
+- AI系ツール（Anthropic / Claude / Cursor / Devin）のソースは `ai-tools-sources.md` に分離済み（未作成の場合は別途作成すること）
