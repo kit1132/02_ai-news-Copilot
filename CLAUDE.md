@@ -20,8 +20,41 @@
 - Claude Code on the web（クラウド実行）
 - スケジュールタスクとして毎朝自動実行
 - ネットワーク: Full internet（外部サイトへのWebFetch/WebSearchが必要）
-- **ブランチ: 必ず `main` を使用する。`git checkout main` してから作業を開始すること**
+- **ブランチ: 必ず `main` を使用する（下記「⚠️ ブランチ運用」参照）**
 - **日付: JST（Asia/Tokyo, UTC+9）で判定する。`TZ=Asia/Tokyo date +%Y-%m-%d` で当日日付を取得すること**
+
+## ⚠️ ブランチ運用（最重要・絶対ルール）
+
+**クラウド実行環境はセッションごとに自動で開発ブランチ（`claude/...`）を割り当てるため、2026-06-11 にスケジュールタスクが feature branch（`claude/awesome-cray-h19vj2`）へ digest をコミットする事故が発生した。同じ事故を二度と起こさないため、以下を絶対ルールとする。**
+
+### 開始時（毎セッション必ず）
+
+```bash
+TZ=Asia/Tokyo date +%Y-%m-%d        # 当日日付を取得
+git fetch origin main --depth=1
+git checkout main
+git pull --ff-only origin main
+git rev-parse --abbrev-ref HEAD     # → 必ず `main` であることを確認
+```
+
+`.claude/settings.json` の SessionStart hook が自動で `main` への checkout を試みるが、**ハードコードに頼らず自分でも上記コマンドを必ず実行して確認すること**。
+
+### コミット・push（毎回必ず）
+
+```bash
+git add digests/ .last-check-state.md IMPROVEMENT-BACKLOG.md files.json
+git commit -m "add daily digest YYYY-MM-DD"
+git push origin HEAD:main           # ← 必ず main に直接 push する
+```
+
+**`git push` 単体（リモート追跡ブランチへの push）は禁止**。必ず `HEAD:main` 形式を使う。これにより、たとえ作業が feature branch 上であっても結果は main に反映される。
+
+### 禁止事項
+
+- `git checkout -b <new-branch>` — 新規ブランチを切らない
+- `git push origin <feature-branch>` — feature branch にだけ push しない
+- PR 作成して放置 — 自動マージしないので main に反映されない
+- main 以外のブランチで作業終了 — どんな状況でも最後は main に push する
 
 ## ダイジェスト生成後の手順
 
@@ -29,7 +62,7 @@
 2. `.last-check-state.md` を更新
 3. `IMPROVEMENT-BACKLOG.md` を更新（新規提案の起票・既出提案の回数更新・障害の最終確認日更新。`output-style.md` の改善メモ規定参照）
 4. `files.json` の配列先頭に新ファイルのパス（`digests/YYYY/MM/ai-news-YYYY-MM-DD.md`）を追加
-5. 変更（`IMPROVEMENT-BACKLOG.md` 含む）を `main` ブランチに git commit + push する
+5. **`git push origin HEAD:main` で main に直接 push する**（上の絶対ルール参照。`IMPROVEMENT-BACKLOG.md` を含めること）
 
 ## ルール参照
 
