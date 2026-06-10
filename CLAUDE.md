@@ -11,6 +11,7 @@
 
 - `digests/YYYY/MM/ai-news-YYYY-MM-DD.md` — デイリーダイジェスト本体
 - `.last-check-state.md` — 各ソースの前回チェック状態（差分判定用）
+- `IMPROVEMENT-BACKLOG.md` — 改善提案・取得障害の台帳（改善メモの単一情報源。運用ルールはファイル冒頭参照）
 - `index.html` — ダイジェストのHTMLビューア（marked.js使用、GitHub Pagesで公開）
 - `files.json` — ビューアが参照するダイジェストファイル一覧（新しい順、パスはルートからの相対）
 
@@ -26,8 +27,9 @@
 
 1. `digests/YYYY/MM/ai-news-YYYY-MM-DD.md` を生成（ディレクトリがなければ作成）
 2. `.last-check-state.md` を更新
-3. `files.json` の配列先頭に新ファイルのパス（`digests/YYYY/MM/ai-news-YYYY-MM-DD.md`）を追加
-4. 変更を `main` ブランチに git commit + push する
+3. `IMPROVEMENT-BACKLOG.md` を更新（新規提案の起票・既出提案の回数更新・障害の最終確認日更新。`output-style.md` の改善メモ規定参照）
+4. `files.json` の配列先頭に新ファイルのパス（`digests/YYYY/MM/ai-news-YYYY-MM-DD.md`）を追加
+5. 変更（`IMPROVEMENT-BACKLOG.md` 含む）を `main` ブランチに git commit + push する
 
 ## ルール参照
 
