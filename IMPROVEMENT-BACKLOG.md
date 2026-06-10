@@ -19,11 +19,16 @@
 ## 既知の取得障害
 
 - mc.merill.net: 403（初出 2026-06-06 ※それ以前から継続の可能性 / 最終確認 2026-06-10）→ 回避策: WebSearch
-- techcommunity.microsoft.com（M365 Copilot Blog）: 403（初出 2026-06-06 / 最終確認 2026-06-10）→ 回避策: WebSearch（RSS は robots.txt ブロック。daily-sources.md 備考に記載済み）
+- techcommunity.microsoft.com（M365 Copilot Blog RSS）: 403（初出 2026-06-06 / 最終確認 2026-06-10）→ 回避策: WebSearch
+- techcommunity.microsoft.com（Copilot Studio Blog RSS）: 403（初出 2026-06-10 / 最終確認 2026-06-10）→ 回避策: WebSearch（daily-sources.md では取得可能と記載されていたが本日403確認）
 - releasebot.io: 403（初出 2026-06-08 / 最終確認 2026-06-10）→ 回避策: WebSearch。Claude Code 分は code.claude.com を直接 WebFetch
-- cursor.com/changelog: 403（初出 2026-06-07 / 最終確認 2026-06-09）→ 回避策: WebSearch
+- cursor.com/changelog: 403（初出 2026-06-07 / 最終確認 2026-06-10）→ 回避策: WebSearch
 - code.claude.com/docs/en/changelog: 断続的 403（06-08 失敗・06-09/06-10 成功）→ 回避策: 失敗時は WebSearch + releasebot.io
-- superhub.com.hk / changepilot.cloud / levelupm365.com: 403、WebSearch でも本文取得不可の場合あり（初出 2026-06-06 / 最終確認 2026-06-09）→ 回避策: なし（存在確認のみ・手動確認推奨）
+- superhub.com.hk / changepilot.cloud / levelupm365.com: 403、WebSearch でも本文取得不可の場合あり（初出 2026-06-06 / 最終確認 2026-06-10）→ 回避策: なし（存在確認のみ・手動確認推奨）
+- devblogs.microsoft.com/microsoft365dev/feed/: 403（初出 2026-06-10 / 最終確認 2026-06-10）→ 回避策: WebSearch
+- qiita.com/tags/*/feed（copilotstudio, powerplatform, powerautomate）: 403（初出 2026-06-10 / 最終確認 2026-06-10）→ 回避策: WebSearch
+- zenn.dev/topics/*/feed（copilotstudio, powerplatform, powerautomate）: 403（初出 2026-06-10 / 最終確認 2026-06-10）→ 回避策: WebSearch
+- ppweekly.com/feed: 403（初出 2026-06-10 / 最終確認 2026-06-10）→ 回避策: WebSearch
 
 ## アーカイブ（採用済み・見送り）
 
