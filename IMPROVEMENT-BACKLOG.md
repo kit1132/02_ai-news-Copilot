@@ -14,33 +14,7 @@
 
 ## 提案中
 
-### B-001: Copilot Studio What's New の取得方法を Microsoft Learn MCP 優先に更新
-- 状態: 提案中
-- 初出: 2026-06-07 / 最終確認: 2026-06-08 / 回数: 2
-- 対象: `.claude/rules/sites/daily-sources.md`「Copilot Studio - What's New」取得方法欄・取得方法の凡例
-- 変更内容: 取得方法を「Microsoft Learn MCP → WebFetch → WebSearch」に変更し、凡例に Microsoft Learn MCP を追加
-- 根拠: 06-07・06-08 と Learn MCP 経由で安定取得できた。WebFetch は 403 になる日がある
-
-### B-002: M365 Copilot Release Notes の取得手順を備考に明記
-- 状態: 提案中
-- 初出: 2026-06-08 / 最終確認: 2026-06-08 / 回数: 1
-- 対象: `.claude/rules/sites/daily-sources.md`「Microsoft 365 Copilot Release Notes」備考
-- 変更内容: 「ページが18,000行超と巨大なため、Microsoft Learn MCP で取得し grep で差分確認する」を追加
-- 根拠: 06-08 にこの手順で取得成功。手順が記録されていないと毎回試行錯誤になる
-
-### B-003: M365 Copilot Release Notes の更新サイクルを備考に記載
-- 状態: 提案中
-- 初出: 2026-06-07 / 最終確認: 2026-06-09 / 回数: 2
-- 対象: `.claude/rules/sites/daily-sources.md`「Microsoft 365 Copilot Release Notes」備考
-- 変更内容: 「隔週更新の傾向（例: 6/2 の次は 6/16 前後見込み）」を追加
-- 根拠: 更新サイクルを記録しておけば、未更新期間の確認を軽量化できる
-
-### B-004: 取得不可が続く二次メディア記事の扱い方針を明文化
-- 状態: 提案中
-- 初出: 2026-06-06 / 最終確認: 2026-06-09 / 回数: 2
-- 対象: `.claude/rules/sites/fetch-flow.md`（または daily-sources.md メンテナンスノート）
-- 変更内容: アドホックに発見した二次メディア記事（superhub.com.hk / changepilot.cloud / levelupm365.com 等）が WebFetch 403 かつ WebSearch でも本文取得不可の場合、「存在確認のみ記載し本文は手動確認推奨とする」方針を明記
-- 根拠: 06-06 に3サイト連続で本文取得不可、06-09 に changepilot.cloud で再発
+（現在なし）
 
 ## 既知の取得障害
 
@@ -53,4 +27,7 @@
 
 ## アーカイブ（採用済み・見送り）
 
-（まだなし。kit が「提案中」から状態を変更してここへ移動する）
+- B-001: Copilot Studio What's New の取得方法を Microsoft Learn MCP 優先に更新 — **採用済み（2026-06-10）**。`daily-sources.md` の取得方法欄と凡例に反映
+- B-002: M365 Copilot Release Notes の取得手順を備考に明記 — **採用済み（2026-06-10）**。`daily-sources.md` 備考に反映（Learn MCP + grep 差分確認）
+- B-003: M365 Copilot Release Notes の更新サイクルを備考に記載 — **採用済み（2026-06-10）**。`daily-sources.md` 備考に反映（隔週傾向）
+- B-004: 取得不可が続く二次メディア記事の扱い方針を明文化 — **採用済み（2026-06-10）**。`fetch-flow.md`「アドホック二次メディアの扱い」として反映

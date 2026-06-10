@@ -5,6 +5,7 @@
 - **WebFetch**: HTMLページを直接取得する
 - **RSS**: RSS/Atom フィードを取得し、XMLから新着エントリを抽出する
 - **WebSearch**: 検索エンジン経由で情報を取得する
+- **Microsoft Learn MCP**: Microsoft Learn MCP サーバー経由でドキュメントを取得する（`learn.microsoft.com` 配下で WebFetch が403の場合も安定して取得できる）
 
 各ソースの「取得方法」は優先順序を示す。フォールバック条件（403/429時の挙動、リトライ手順など）の詳細は `fetch-flow.md` を参照。
 
@@ -24,15 +25,17 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 
 ### Copilot Studio - What's New
 - URL: https://learn.microsoft.com/en-us/microsoft-copilot-studio/whats-new
-- 取得方法: WebFetch
+- 取得方法: Microsoft Learn MCP → WebFetch → WebSearch
 - 注目点: 新機能リリース（Preview/GA）、モデル変更（GPT-4o→GPT-5等）、破壊的変更、VS Code拡張、エージェント評価機能
 - 頻度: 毎日確認
+- 備考: 2026-06-07・06-08 に Learn MCP 経由で安定取得を確認（B-001採用、2026-06-10）。WebFetch は403になる日がある
 
 ### Microsoft 365 Copilot Release Notes
 - URL: https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes
-- 取得方法: WebFetch
+- 取得方法: Microsoft Learn MCP → WebFetch
 - 注目点: M365 Copilot全体のリリースノート（Word/Excel/PowerPoint/Outlook/Teams各アプリ別）。Agent Mode、ライセンス変更、新エージェント追加
 - 頻度: 毎日確認
+- 備考: ページが18,000行超と巨大なため、Microsoft Learn MCP で取得し grep で差分確認する（B-002採用）。隔週更新の傾向あり（例: 6/2 の次は 6/16 前後見込み。B-003採用、2026-06-10）
 
 ### Microsoft 365 Roadmap
 - URL: https://www.microsoft.com/en-us/microsoft-365/roadmap
