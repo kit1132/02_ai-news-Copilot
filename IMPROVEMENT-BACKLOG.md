@@ -14,19 +14,19 @@
 
 ## 提案中
 
-- B-005: Qiita RSSフィード全4件（copilotstudio / powerplatform / powerautomate / powerapps）が403を返す — 対象: `daily-sources.md` Qiitaセクションの取得方法 / 変更内容: プライマリをWebSearch（`site:qiita.com タグ名 2026`）に変更 / 根拠: 2026-06-11に全フィードで403確認（初出 2026-06-11 / 最終確認 2026-06-11 / 回数 1）
+- B-005: Qiita RSSフィード全4件（copilotstudio / powerplatform / powerautomate / powerapps）が403を返す — 対象: `daily-sources.md` Qiitaセクションの取得方法 / 変更内容: プライマリをWebSearch（`site:qiita.com タグ名 2026`）に変更 / 根拠: 2026-06-11に全フィードで403確認（初出 2026-06-11 / 最終確認 2026-06-30 / 回数 2）
 - B-006: Zenn RSSフィード全3件（copilotstudio / powerplatform / powerautomate）が403を返す — 対象: `daily-sources.md` Zennセクションの取得方法 / 変更内容: プライマリをWebSearch（`site:zenn.dev トピック名 2026`）に変更 / 根拠: 2026-06-11に全フィードで403確認（初出 2026-06-11 / 最終確認 2026-06-11 / 回数 1）
 - B-007: devblogs.microsoft.com M365 Developer Blog RSSフィードが403 — 対象: `daily-sources.md` M365 Developer Blogセクションの取得方法 / 変更内容: プライマリをWebSearchに変更、RSS URLを代替に降格 / 根拠: 2026-06-11にRSS URL 2件とも403確認（初出 2026-06-11 / 最終確認 2026-06-11 / 回数 1）
 
 ## 既知の取得障害
 
 - mc.merill.net: 403（初出 2026-06-06 ※それ以前から継続の可能性 / 最終確認 2026-06-11）→ 回避策: WebSearch
-- techcommunity.microsoft.com（M365 Copilot Blog / Copilot Studio Blog）: 403（初出 2026-06-06 / 最終確認 2026-06-11）→ 回避策: WebSearch（board RSS も 2026-06-11 に 403 確認）
+- techcommunity.microsoft.com（M365 Copilot Blog / Copilot Studio Blog）: 403（初出 2026-06-06 / 最終確認 2026-06-30）→ 回避策: WebSearch（board RSS も 2026-06-11 に 403 確認）
 - releasebot.io: 403（初出 2026-06-08 / 最終確認 2026-06-11）→ 回避策: WebSearch。Claude Code 分は code.claude.com を直接 WebFetch
 - cursor.com/changelog: 403（初出 2026-06-07 / 最終確認 2026-06-11）→ 回避策: WebSearch
 - code.claude.com/docs/en/changelog: 断続的 403（06-08 失敗・06-09/06-10/06-11 成功）→ 回避策: 失敗時は WebSearch + releasebot.io
 - superhub.com.hk / changepilot.cloud / levelupm365.com: 403、WebSearch でも本文取得不可の場合あり（初出 2026-06-06 / 最終確認 2026-06-11）→ 回避策: なし（存在確認のみ・手動確認推奨）
-- qiita.com RSSフィード（4件）: 403（初出 2026-06-11 / 最終確認 2026-06-11）→ 回避策: WebSearch
+- qiita.com RSSフィード（4件）: 403（初出 2026-06-11 / 最終確認 2026-06-30）→ 回避策: WebSearch
 - zenn.dev RSSフィード（3件）: 403（初出 2026-06-11 / 最終確認 2026-06-11）→ 回避策: WebSearch
 - devblogs.microsoft.com/microsoft365dev/feed/: 403（初出 2026-06-11 / 最終確認 2026-06-11）→ 回避策: WebSearch
 
