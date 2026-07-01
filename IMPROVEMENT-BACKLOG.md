@@ -22,7 +22,7 @@
 
 - mc.merill.net: 403（初出 2026-06-06 ※それ以前から継続の可能性 / 最終確認 2026-06-11）→ 回避策: WebSearch
 - techcommunity.microsoft.com（M365 Copilot Blog / Copilot Studio Blog）: 403（初出 2026-06-06 / 最終確認 2026-06-30）→ 回避策: WebSearch（board RSS も 2026-06-11 に 403 確認）
-- releasebot.io: 403（初出 2026-06-08 / 最終確認 2026-06-11）→ 回避策: WebSearch。Claude Code 分は code.claude.com を直接 WebFetch
+- releasebot.io: 403（初出 2026-06-08 / 最終確認 2026-07-02）→ 回避策: WebSearch。Claude Code 分は github.com raw CHANGELOG を直接 WebFetch
 - cursor.com/changelog: 403（初出 2026-06-07 / 最終確認 2026-06-11）→ 回避策: WebSearch
 - code.claude.com/docs/en/changelog: 断続的 403（06-08 失敗・06-09/06-10/06-11 成功）→ 回避策: 失敗時は WebSearch + releasebot.io
 - superhub.com.hk / changepilot.cloud / levelupm365.com: 403、WebSearch でも本文取得不可の場合あり（初出 2026-06-06 / 最終確認 2026-06-11）→ 回避策: なし（存在確認のみ・手動確認推奨）
