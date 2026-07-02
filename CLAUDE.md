@@ -56,13 +56,22 @@ git push origin HEAD:main           # ← 必ず main に直接 push する
 - PR 作成して放置 — 自動マージしないので main に反映されない
 - main 以外のブランチで作業終了 — どんな状況でも最後は main に push する
 
+## ⚠️ カバレッジ自己チェック（push 前に毎回必須）
+
+**2026-06-12 のリモートルーチン移行後、「毎日確認」ソースの半数以上（M365 Roadmap / Microsoft Copilot Blog / Power Platform 系ブログ / X トレンド等）が巡回されず、`.last-check-state.md` の最終確認日が 6/12-13 のまま凍結する問題が約3週間続いた（2026-07-02 発覚）。再発防止のため以下を絶対ルールとする。**
+
+- push 前に `grep -B1 "最終確認" .last-check-state.md` を実行し、`daily-sources.md` で頻度「毎日確認」の**全ソース**の最終確認日が当日（JST）になっていることを確認する
+- 当日になっていないソースが1つでもあれば、push 前にそのソースを確認して `.last-check-state.md` を更新する。どうしても確認できない場合は、該当ソースの備考に「YYYY-MM-DD スキップ（理由）」と明記する（黙ってスキップしない）
+- 「週次確認」ソースは最終確認が7日以内であることを確認し、超過していればその日に確認する
+
 ## ダイジェスト生成後の手順
 
 1. `digests/YYYY/MM/ai-news-YYYY-MM-DD.md` を生成（ディレクトリがなければ作成）
 2. `.last-check-state.md` を更新
-3. `IMPROVEMENT-BACKLOG.md` を更新（新規提案の起票・既出提案の回数更新・障害の最終確認日更新。`output-style.md` の改善メモ規定参照）
-4. `files.json` の配列先頭に新ファイルのパス（`digests/YYYY/MM/ai-news-YYYY-MM-DD.md`）を追加
-5. **`git push origin HEAD:main` で main に直接 push する**（上の絶対ルール参照。`IMPROVEMENT-BACKLOG.md` を含めること）
+3. **カバレッジ自己チェックを実施する**（上記「⚠️ カバレッジ自己チェック」参照）
+4. `IMPROVEMENT-BACKLOG.md` を更新（新規提案の起票・既出提案の回数更新・障害の最終確認日更新。`output-style.md` の改善メモ規定参照）
+5. `files.json` の配列先頭に新ファイルのパス（`digests/YYYY/MM/ai-news-YYYY-MM-DD.md`）を追加
+6. **`git push origin HEAD:main` で main に直接 push する**（上の絶対ルール参照。`IMPROVEMENT-BACKLOG.md` を含めること）
 
 ## ルール参照
 

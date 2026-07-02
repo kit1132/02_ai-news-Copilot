@@ -35,7 +35,7 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 取得方法: Microsoft Learn MCP → WebFetch
 - 注目点: M365 Copilot全体のリリースノート（Word/Excel/PowerPoint/Outlook/Teams各アプリ別）。Agent Mode、ライセンス変更、新エージェント追加
 - 頻度: 毎日確認
-- 備考: ページが18,000行超と巨大なため、Microsoft Learn MCP で取得し grep で差分確認する（B-002採用）。隔週更新の傾向あり（例: 6/2 の次は 6/16 前後見込み。B-003採用、2026-06-10）
+- 備考: ページが18,000行超と巨大なため、Microsoft Learn MCP で取得し grep で差分確認する（B-002採用）。隔週更新の傾向あり（例: 6/2 の次は 6/16 前後見込み。B-003採用、2026-06-10）。**Learn MCP が使えない場合も WebSearch の二次メディア要約で代替せず、WebFetch で本ページを直接取得し分割読みすること（一次確認基準は `fetch-flow.md` 参照。B-009採用、2026-07-02）**
 
 ### Microsoft 365 Roadmap
 - URL: https://www.microsoft.com/en-us/microsoft-365/roadmap
