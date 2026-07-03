@@ -22,14 +22,14 @@
 ## 既知の取得障害
 
 - mc.merill.net: 403（初出 2026-06-06 ※それ以前から継続の可能性 / 最終確認 2026-06-11）→ 回避策: WebSearch → 復旧（2026-07-02）
-- techcommunity.microsoft.com（M365 Copilot Blog / Copilot Studio Blog）: 403（初出 2026-06-06 / 最終確認 2026-06-30）→ 回避策: WebSearch（board RSS も 2026-06-11 に 403 確認）→ 復旧（2026-07-02、board RSS 2本とも WebFetch 200。記事 HTML 本文は JS レンダリングのため引き続き RSS 本文で代替）
+- techcommunity.microsoft.com（M365 Copilot Blog / Copilot Studio Blog）: 403（初出 2026-06-06 / 最終確認 2026-07-04）→ 回避策: WebSearch（board RSS も 2026-06-11 に 403 確認）→ 復旧（2026-07-02、board RSS 2本とも WebFetch 200。記事 HTML 本文は JS レンダリングのため引き続き RSS 本文で代替）→ 再発（2026-07-04、board RSS 2本とも 403。intermittent。WebSearch フォールバック）
 - releasebot.io: 403（初出 2026-06-08 / 最終確認 2026-07-02）→ 回避策: WebSearch。Claude Code 分は github.com raw CHANGELOG を直接 WebFetch
 - cursor.com/changelog: 403（初出 2026-06-07 / 最終確認 2026-06-11）→ 回避策: WebSearch
 - code.claude.com/docs/en/changelog: 断続的 403（06-08 失敗・06-09/06-10/06-11 成功）→ 回避策: 失敗時は WebSearch + releasebot.io
 - superhub.com.hk / changepilot.cloud / levelupm365.com: 403、WebSearch でも本文取得不可の場合あり（初出 2026-06-06 / 最終確認 2026-06-11）→ 回避策: なし（存在確認のみ・手動確認推奨）
 - qiita.com RSSフィード（4件）: 403（初出 2026-06-11 / 最終確認 2026-06-30）→ 回避策: WebSearch → 復旧（2026-07-02、4フィードすべて 200）
 - zenn.dev RSSフィード（3件）: 403（初出 2026-06-11 / 最終確認 2026-06-11）→ 回避策: WebSearch → 復旧（2026-07-02）
-- devblogs.microsoft.com/microsoft365dev/feed/: 403（初出 2026-06-11 / 最終確認 2026-06-11）→ 回避策: WebSearch → 復旧（2026-07-02）
+- devblogs.microsoft.com/microsoft365dev/feed/: 403（初出 2026-06-11 / 最終確認 2026-07-04）→ 回避策: WebSearch → 復旧（2026-07-02）→ 再発（2026-07-04、intermittent。WebSearch フォールバック）
 - www.microsoft.com/en-us/power-platform/blog/: WebFetch が 200 を返すが記事一覧が不完全（4/27 までしか表示されず、既知の 6/11 月次記事も欠落。403 ではないため従来のフォールバック条件に非該当）（初出 2026-07-02 / 最終確認 2026-07-02）→ 回避策: WebSearch 併用で新着有無を照合
 
 ## アーカイブ（採用済み・見送り）
