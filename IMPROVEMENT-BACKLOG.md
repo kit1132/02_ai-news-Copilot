@@ -25,7 +25,7 @@
 - mc.merill.net: 403（初出 2026-06-06 ※それ以前から継続の可能性 / 最終確認 2026-06-11）→ 回避策: WebSearch → 復旧（2026-07-02）→ 再発（2026-07-05、WebSearch フォールバック）
 - techcommunity.microsoft.com（M365 Copilot Blog / Copilot Studio Blog）: 403（初出 2026-06-06 / 最終確認 2026-07-04）→ 回避策: WebSearch（board RSS も 2026-06-11 に 403 確認）→ 復旧（2026-07-02、board RSS 2本とも WebFetch 200。記事 HTML 本文は JS レンダリングのため引き続き RSS 本文で代替）→ 再発（2026-07-04、board RSS 2本とも 403。intermittent。WebSearch フォールバック）
 - releasebot.io: 403（初出 2026-06-08 / 最終確認 2026-07-02）→ 回避策: WebSearch。Claude Code 分は github.com raw CHANGELOG を直接 WebFetch
-- cursor.com/changelog: 403（初出 2026-06-07 / 最終確認 2026-07-10）→ 回避策: WebSearch
+- cursor.com/changelog: 403（初出 2026-06-07 / 最終確認 2026-07-12）→ 回避策: WebSearch
 - code.claude.com/docs/en/changelog: 断続的 403（06-08 失敗・06-09/06-10/06-11 成功）→ 回避策: 失敗時は WebSearch + releasebot.io
 - superhub.com.hk / changepilot.cloud / levelupm365.com: 403、WebSearch でも本文取得不可の場合あり（初出 2026-06-06 / 最終確認 2026-06-11）→ 回避策: なし（存在確認のみ・手動確認推奨）
 - qiita.com RSSフィード（4件）: 403（初出 2026-06-11 / 最終確認 2026-07-06）→ 回避策: WebSearch → 復旧（2026-07-02、4フィードすべて 200）→ 再発（2026-07-05、copilotstudio/powerplatform で 403。intermittent。WebSearch フォールバック。2026-07-06 も copilotstudio で 403 継続）
