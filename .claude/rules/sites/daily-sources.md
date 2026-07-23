@@ -233,6 +233,14 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 頻度: 週1回確認
 - 備考: 2026-06-10 追加。変更があった項目はダイジェストで「破壊的変更」として目立たせる。研修資料の陳腐化チェックにも使う
 
+### M365 Copilot プロンプト作成コース（MS-4005 動画コレクション）
+- URL: https://learn.microsoft.com/collections/d4y3hkm5p12je2
+- API URL（取得はこちら必須）: https://learn.microsoft.com/api/lists/d4y3hkm5p12je2?locale=en-us
+- 取得方法: WebFetch（API URL）
+- 注目点: 講師主導コース「MS-4005 Craft effective prompts for Microsoft 365 Copilot」の全9モジュール動画版コレクション。モジュール追加・内容更新の検知。プロンプト研修コンテンツのネタ元
+- 頻度: 週1回確認（ほぼ静的な学習コンテンツのため変更検知のみ）
+- 備考: 2026-07-23 追加（kit 指示）。コレクションページ本体は SPA のため WebFetch では中身が取れない。`/api/lists/<コレクションID>` の JSON なら取得可（2026-07-23 疎通確認済み）
+
 ---
 
 ## メンテナンスノート
