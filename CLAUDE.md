@@ -12,7 +12,7 @@
 - `digests/YYYY/MM/ai-news-YYYY-MM-DD.md` — デイリーダイジェスト本体
 - `.last-check-state.md` — 各ソースの前回チェック状態（差分判定用）
 - `IMPROVEMENT-BACKLOG.md` — 改善提案・取得障害の台帳（改善メモの単一情報源。運用ルールはファイル冒頭参照）
-- `index.html` — ダイジェストのHTMLビューア（marked.js使用、GitHub Pagesで公開）
+- `index.html` — 統合ビューア（https://kit1132.github.io/01_ai-news-Master/ ）へのリダイレクト。実体は 01_ai-news-Master/index.html にある。**このファイルは編集不要**
 - `files.json` — ビューアが参照するダイジェストファイル一覧（新しい順、パスはルートからの相対）
 
 ## 実行環境
