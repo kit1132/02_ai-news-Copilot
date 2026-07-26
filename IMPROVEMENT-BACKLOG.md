@@ -14,24 +14,26 @@
 
 ## 提案中
 
-- B-005: Qiita RSSフィード全4件（copilotstudio / powerplatform / powerautomate / powerapps）が403を返す — 対象: `daily-sources.md` Qiitaセクションの取得方法 / 変更内容: プライマリをWebSearch（`site:qiita.com タグ名 2026`）に変更 / 根拠: 2026-06-11に全フィードで403確認（初出 2026-06-11 / 最終確認 2026-07-20 / 回数 6）※2026-07-02 に RSS 復旧を確認するも 2026-07-05・07-06・07-20 に copilotstudio で連続403（intermittent）。一時的復旧はあるが 403 が繰り返し再発するため、WebSearch フォールバックを前提化する本提案の価値は残る（採否は kit 判断）
+- B-005: Qiita RSSフィード全4件（copilotstudio / powerplatform / powerautomate / powerapps）が403を返す — 対象: `daily-sources.md` Qiitaセクションの取得方法 / 変更内容: プライマリをWebSearch（`site:qiita.com タグ名 2026`）に変更 / 根拠: 2026-06-11に全フィードで403確認（初出 2026-06-11 / 最終確認 2026-07-27 / 回数 7）※2026-07-02 に RSS 復旧を確認するも 2026-07-05・07-06・07-20・07-27 に copilotstudio で連続403（intermittent）。一時的復旧はあるが 403 が繰り返し再発するため、WebSearch フォールバックを前提化する本提案の価値は残る（採否は kit 判断）
 - B-006: Zenn RSSフィード全3件（copilotstudio / powerplatform / powerautomate）が403を返す — 対象: `daily-sources.md` Zennセクションの取得方法 / 変更内容: プライマリをWebSearch（`site:zenn.dev トピック名 2026`）に変更 / 根拠: 2026-06-11に全フィードで403確認（初出 2026-06-11 / 最終確認 2026-07-02 / 回数 2）※2026-07-02 に RSS 復旧を確認。同上
-- B-007: devblogs.microsoft.com M365 Developer Blog RSSフィードが403 — 対象: `daily-sources.md` M365 Developer Blogセクションの取得方法 / 変更内容: プライマリをWebSearchに変更、RSS URLを代替に降格 / 根拠: 2026-06-11にRSS URL 2件とも403確認（初出 2026-06-11 / 最終確認 2026-07-02 / 回数 2）※2026-07-02 に RSS 復旧を確認。同上
-- B-010: Power Platform Blog の WebFetch が 200 でも記事一覧が不完全 — 対象: `daily-sources.md` Power Platform Blog セクションの取得方法・備考 / 変更内容: 「WebFetch 成功時も最新記事の日付が古い場合は不完全レンダリングとみなし WebSearch で新着有無を照合する」旨を備考に追記 / 根拠: 2026-07-02 に WebFetch 200 だが一覧が 4/27 で止まり 6/11 月次記事が欠落（初出 2026-07-02 / 最終確認 2026-07-26 / 回数 5）
-- B-011: Power Platform Blog の WebSearch 照合が月次「What's New feature update」記事に偏り、トピック個別記事を取りこぼす — 対象: `daily-sources.md` Power Platform Blog セクションの検索キーワード・備考 / 変更内容: WebSearch 照合クエリに月次更新以外のトピック記事（`site:microsoft.com/power-platform/blog Dataverse 2026`・`Power Apps`・`Power Automate`・`MCP` 等）を追加し、子カテゴリ記事も日次で拾う旨を明記 / 根拠: MCP カタログ 60+・Dataverse プラグインの Claude/Cursor/GitHub Copilot 展開を扱う 2026-07-06 の Dataverse トピック記事が、月次フィーチャー更新中心の照合により5日間（〜7/11）未回収だった（初出 2026-07-11 / 最終確認 2026-07-26 / 回数 7）
+- B-007: devblogs.microsoft.com M365 Developer Blog RSSフィードが403 — 対象: `daily-sources.md` M365 Developer Blogセクションの取得方法 / 変更内容: プライマリをWebSearchに変更、RSS URLを代替に降格 / 根拠: 2026-06-11にRSS URL 2件とも403確認（初出 2026-06-11 / 最終確認 2026-07-27 / 回数 3）※2026-07-02 に RSS 復旧を確認。同上
+- B-010: Power Platform Blog の WebFetch が 200 でも記事一覧が不完全 — 対象: `daily-sources.md` Power Platform Blog セクションの取得方法・備考 / 変更内容: 「WebFetch 成功時も最新記事の日付が古い場合は不完全レンダリングとみなし WebSearch で新着有無を照合する」旨を備考に追記 / 根拠: 2026-07-02 に WebFetch 200 だが一覧が 4/27 で止まり 6/11 月次記事が欠落（初出 2026-07-02 / 最終確認 2026-07-27 / 回数 6）
+- B-011: Power Platform Blog の WebSearch 照合が月次「What's New feature update」記事に偏り、トピック個別記事を取りこぼす — 対象: `daily-sources.md` Power Platform Blog セクションの検索キーワード・備考 / 変更内容: WebSearch 照合クエリに月次更新以外のトピック記事（`site:microsoft.com/power-platform/blog Dataverse 2026`・`Power Apps`・`Power Automate`・`MCP` 等）を追加し、子カテゴリ記事も日次で拾う旨を明記 / 根拠: MCP カタログ 60+・Dataverse プラグインの Claude/Cursor/GitHub Copilot 展開を扱う 2026-07-06 の Dataverse トピック記事が、月次フィーチャー更新中心の照合により5日間（〜7/11）未回収だった（初出 2026-07-11 / 最終確認 2026-07-27 / 回数 8）
+- B-012: Copilot Studio Release Wave のソース定義が実体と乖離している疑い — 対象: `daily-sources.md`「Copilot Studio Release Wave（計画機能一覧）」セクションの URL・取得方法・備考 / 変更内容: 当該 URL が M365 Roadmap を返す状態が継続するなら、プライマリを M365 Roadmap（`https://www.microsoft.com/en-us/microsoft-365/roadmap`）に切り替え、旧 release-plan URL は代替に降格する。備考に「2026-07-02 のロードマップ移行に伴い release-plan 配下は非更新の可能性」を明記 / 根拠: 2026-07-27 に Microsoft Learn MCP で `release-plan/2026wave1/microsoft-copilot-studio/planned-features` を取得したところ、計画機能テーブルではなく M365 Roadmap ページ本文が返った。同じ Learn MCP で `release-plan/2026wave1/`（Power Platform 全体版）は正常に Wave 1 概要を返すため当該パス固有の挙動。WebFetch は 403 のため一次断定は未了（初出 2026-07-27 / 最終確認 2026-07-27 / 回数 1）
 
 ## 既知の取得障害
 
 - mc.merill.net: 403（初出 2026-06-06 ※それ以前から継続の可能性 / 最終確認 2026-06-11）→ 回避策: WebSearch → 復旧（2026-07-02）→ 再発（2026-07-05、WebSearch フォールバック）
-- techcommunity.microsoft.com（M365 Copilot Blog / Copilot Studio Blog）: 403（初出 2026-06-06 / 最終確認 2026-07-20）→ 回避策: WebSearch（board RSS も 2026-06-11 に 403 確認）→ 復旧（2026-07-02、board RSS 2本とも WebFetch 200。記事 HTML 本文は JS レンダリングのため引き続き RSS 本文で代替）→ 再発（2026-07-04、board RSS 2本とも 403。intermittent。WebSearch フォールバック。2026-07-20 も両board 403 継続）
+- techcommunity.microsoft.com（M365 Copilot Blog / Copilot Studio Blog）: 403（初出 2026-06-06 / 最終確認 2026-07-27）→ 回避策: WebSearch（board RSS も 2026-06-11 に 403 確認）→ 復旧（2026-07-02、board RSS 2本とも WebFetch 200。記事 HTML 本文は JS レンダリングのため引き続き RSS 本文で代替）→ 再発（2026-07-04、board RSS 2本とも 403。intermittent。WebSearch フォールバック。2026-07-20 も両board 403 継続）
 - releasebot.io: 403（初出 2026-06-08 / 最終確認 2026-07-02）→ 回避策: WebSearch。Claude Code 分は github.com raw CHANGELOG を直接 WebFetch
-- cursor.com/changelog: 403（初出 2026-06-07 / 最終確認 2026-07-23）→ 回避策: WebSearch
+- docs.devin.ai（release-notes / desktop changelog）: 403（初出 2026-07-27 ※以前から継続の可能性 / 最終確認 2026-07-27）→ 回避策: WebSearch（本文は二次照合のみ・手動確認推奨）
+- cursor.com/changelog: 403（初出 2026-06-07 / 最終確認 2026-07-27）→ 回避策: WebSearch
 - code.claude.com/docs/en/changelog: 断続的 403（06-08 失敗・06-09/06-10/06-11 成功）→ 回避策: 失敗時は WebSearch + releasebot.io
 - superhub.com.hk / changepilot.cloud / levelupm365.com: 403、WebSearch でも本文取得不可の場合あり（初出 2026-06-06 / 最終確認 2026-06-11）→ 回避策: なし（存在確認のみ・手動確認推奨）
-- qiita.com RSSフィード（4件）: 403（初出 2026-06-11 / 最終確認 2026-07-20）→ 回避策: WebSearch → 復旧（2026-07-02、4フィードすべて 200）→ 再発（2026-07-05、copilotstudio/powerplatform で 403。intermittent。WebSearch フォールバック。2026-07-06・07-20 も copilotstudio で 403 継続）
+- qiita.com RSSフィード（4件）: 403（初出 2026-06-11 / 最終確認 2026-07-27）→ 回避策: WebSearch → 復旧（2026-07-02、4フィードすべて 200）→ 再発（2026-07-05、copilotstudio/powerplatform で 403。intermittent。WebSearch フォールバック。2026-07-06・07-20 も copilotstudio で 403 継続）
 - zenn.dev RSSフィード（3件）: 403（初出 2026-06-11 / 最終確認 2026-06-11）→ 回避策: WebSearch → 復旧（2026-07-02）
-- devblogs.microsoft.com/microsoft365dev/feed/: 403（初出 2026-06-11 / 最終確認 2026-07-04）→ 回避策: WebSearch → 復旧（2026-07-02）→ 再発（2026-07-04、intermittent。WebSearch フォールバック）
-- www.microsoft.com/en-us/power-platform/blog/: WebFetch が 200 を返すが記事一覧が不完全（4/27 までしか表示されず、既知の 6/11 月次記事も欠落。403 ではないため従来のフォールバック条件に非該当）（初出 2026-07-02 / 最終確認 2026-07-02）→ 回避策: WebSearch 併用で新着有無を照合
+- devblogs.microsoft.com/microsoft365dev/feed/: 403（初出 2026-06-11 / 最終確認 2026-07-27）→ 回避策: WebSearch → 復旧（2026-07-02）→ 再発（2026-07-04、intermittent。WebSearch フォールバック）
+- www.microsoft.com/en-us/power-platform/blog/: WebFetch が 200 を返すが記事一覧が不完全（4/27 までしか表示されず、既知の 6/11 月次記事も欠落。403 ではないため従来のフォールバック条件に非該当）（初出 2026-07-02 / 最終確認 2026-07-27）→ 回避策: WebSearch 併用で新着有無を照合
 
 ## アーカイブ（採用済み・見送り）
 
