@@ -5,7 +5,10 @@
 - 出力は日本語
 - 簡潔で実用的な情報を好む。冗長な説明は不要
 - 定量的な根拠を重視
-- AIエージェント・開発ツールのニュースに特化
+- **Microsoft エコシステムの AI ニュースに特化する**（M365 Copilot / Copilot Studio / Power Platform / Azure AI / Microsoft の AI モデル）
+- **他社の AI 開発ツール（Cursor / Claude / Anthropic / OpenAI / Codex / Devin / Gemini 等）は `kit1132/01_ai-news-Master` の担当。このリポジトリでは扱わない**
+  - 2026-07-26 の実測で、直近10ファイル中7ファイルの先頭 H2 が「AI開発ツール」になっており、Microsoft 一次が「据え置き・新規なし」の日を他社ツールで埋めていた。担当範囲の宣言が 01 のコピーのままだったことが原因
+  - Microsoft の一次情報に新規がない日は、`output-style.md` の「情報が少ない日は無理に増やさない（『特筆事項なし』でOK）」に従う。他社ツールで埋めない
 
 ## プロジェクト構成
 
