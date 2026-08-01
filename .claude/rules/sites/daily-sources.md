@@ -36,6 +36,7 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 注目点: M365 Copilot全体のリリースノート（Word/Excel/PowerPoint/Outlook/Teams各アプリ別）。Agent Mode、ライセンス変更、新エージェント追加
 - 頻度: 毎日確認
 - 備考: ページが18,000行超と巨大なため、Microsoft Learn MCP で取得し grep で差分確認する（B-002採用）。隔週更新の傾向あり（例: 6/2 の次は 6/16 前後見込み。B-003採用、2026-06-10）。**Learn MCP が使えない場合も WebSearch の二次メディア要約で代替せず、WebFetch で本ページを直接取得し分割読みすること（一次確認基準は `fetch-flow.md` 参照。B-009採用、2026-07-02）**
+  ⚠️ **最新バッチの有無を `microsoft_docs_search` の返す日付見出しの並びで判定しない。`microsoft_docs_fetch` でページ本文を取得し、先頭の `## ` 見出し（＝最新バッチ日）を直接読んで判定すること。** docs_search は「新着の存在に気づく」用途に限定する。2026-07-30・07-31 は docs_search が July 15 → July 01 → June 16 の順で返したため「7月の追加バッチはゼロ」と誤判定したが、08-01 に docs_fetch で本文先頭を読むと「July 29, 2026」（対象期間 7/15〜7/29・全10項目）だった。取りこぼした10項目には Agent Builder の SharePoint リスト知識ソース対応（Roadmap 561920）が含まれる（B-019採用、2026-08-02）
 
 ### Microsoft 365 Roadmap
 - URL: https://www.microsoft.com/en-us/microsoft-365/roadmap
@@ -147,10 +148,11 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - URL: https://www.microsoft.com/en-us/microsoft-365/blog/
 - RSS URL（優先）: https://www.microsoft.com/en-us/microsoft-365/blog/feed/
 - 検索キーワード（WebSearch用）: `Microsoft 365 blog announcement Copilot 2026`
-- 取得方法: RSS → WebSearch
+- 取得方法: RSS → **WebSearch 照合（毎日併用）** → WebSearch
 - 注目点: M365 全体の大型発表・ライセンス/料金変更の初出（Microsoft Scout、Work IQ、M365 Copilot 新デザイン等）
 - 頻度: 毎日確認
-- 備考: 2026-06-10 追加。microsoft.com は UA により 403 を返すことがある。失敗時は WebSearch へ。日次の細かい更新は Release Notes / Roadmap と重複するため大型発表のみ拾う
+- 備考: 2026-06-10 追加。microsoft.com は UA により 403 を返すことがある。失敗時は WebSearch へ。日次の細かい更新は Release Notes / Roadmap と重複するため大型発表のみ拾う。
+  ⚠️ **RSS の WebFetch が 200 でも先頭エントリが最新とは限らない。** `site:microsoft.com/en-us/microsoft-365/blog 2026` 等での WebSearch 照合を毎日併用し、`.last-check-state.md` の最新記事日付と突合すること。2026-08-01 は同一 RSS URL を WebFetch して「6/25 の Copilot in Excel 記事が最新」と判定したが、08-02 の取得では 7/30 の "The next measure of AI momentum is work transformed"（有償3,000万シート・展開ベンチマーク等の一次数値を含む）が先頭にあり、過去の全 digest に未掲載だった。**Release Notes の B-019 と同じ「単一の取得経路が最新項目を落とす」類型**（B-020採用、2026-08-02）
 
 ### Qiita タグフィード（日本語実務情報）
 - RSS URL（すべて巡回）:

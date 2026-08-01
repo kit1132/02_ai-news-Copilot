@@ -29,6 +29,10 @@
 - `learn.microsoft.com` や公式ブログ等の一次情報源は、**一次ページ本文を取得したときのみ「確認済み」とする**。二次メディア（aguidetocloud / neowin / supersimple365 等）の要約記事だけで済ませた場合は確認済み扱いにせず、`.last-check-state.md` の該当ソース備考に「二次ソースのみ・一次未確認」と明記する
 - M365 Copilot Release Notes は、Microsoft Learn MCP が使えない環境でも WebSearch の二次要約で代替しない。**WebFetch で learn.microsoft.com を直接取得する**（Cloudflare 未使用のため 403 になりにくい）。出力が巨大な場合は保存されたファイルを分割して読み、最新2バッチ分の全項目（Word/Excel/PowerPoint/Teams 等のアプリ別項目を含む）を漏らさず確認する
 - 二次メディアの要約は「新着の存在に気づく」用途に限定する。ダイジェストに掲載する際は必ず一次ソースの URL を確認し、一次 URL を併記する
+- **「最新かどうか」は検索インデックスや RSS の並び順で判定しない。ページ本文の先頭を直接読む**（B-019 / B-020採用、2026-08-02）
+  - M365 Copilot Release Notes: `microsoft_docs_search` の返す日付見出しの並びで最新バッチを判定しない。`microsoft_docs_fetch` で本文を取得し、先頭の `## ` 見出し（最新バッチ日）を読む
+  - Microsoft 365 Blog（本体）: RSS の WebFetch が 200 でも先頭エントリが最新とは限らない。`site:` 付き WebSearch 照合を毎日併用し、`.last-check-state.md` の最新記事日付と突合する
+  - 共通の原則: **単一の取得経路だけで「新着なし」と結論しない。** 2026-07-30〜08-02 に両ソースで独立に発生し、Release Notes は10項目・M365 Blog は7/30 の一次数値記事を取りこぼした
 
 ## アドホック二次メディアの扱い
 
