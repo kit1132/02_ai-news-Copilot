@@ -1,0 +1,16 @@
+# 01 の再利用ワークフローを呼び、5リポ集約サイトを Vercel 本番へ載せる。
+name: deploy-vercel
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'digests/**'
+      - 'files.json'
+
+jobs:
+  deploy:
+    uses: kit1132/01_ai-news-Master/.github/workflows/deploy-vercel.yml@main
+    secrets:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
