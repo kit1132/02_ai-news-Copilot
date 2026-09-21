@@ -60,7 +60,9 @@ Microsoft Learn MCP からは取得できる。`daily-sources.md` 冒頭の「We
 ⚠️ **本リポジトリで実害が出ている。** `release-plan/2026wave1/microsoft-copilot-studio/planned-features` は
 `aka.ms/MCStoM365Roadmap` へ **301 恒久リダイレクト**していたが、2026-07-27 に「Learn MCP の誤応答」として
 取得障害に登録したため、**原因確定まで10日**（8/6）かかった（B-012）。その間、当該サブツリーからの
-GA 追跡ができないまま復旧を待つ形になっていた。01_ai-news-Master でも 2026-08-07 に同型の 308
+GA 追跡ができないまま復旧を待つ形になっていた。**B-046採用（2026-08-26）** で Copilot Studio /
+Power Platform の Release Wave セクションは廃止し、一次は AI at Work roadmap の RSS に寄せた。
+01_ai-news-Master でも 2026-08-07 に同型の 308
 （`developers.openai.com/codex/changelog` → `learn.chatgpt.com/docs/changelog`）が起きている。
 
 ⚠️ **Learn MCP の応答が「別ページの本文」だった場合を疑う。** 本リポジトリ固有の落とし穴として、
@@ -94,6 +96,14 @@ GA 追跡ができないまま復旧を待つ形になっていた。01_ai-news-
 - `learn.microsoft.com` や公式ブログ等の一次情報源は、**一次ページ本文を取得したときのみ「確認済み」とする**。二次メディア（aguidetocloud / neowin / supersimple365 等）の要約記事だけで済ませた場合は確認済み扱いにせず、`.last-check-state.md` の該当ソース備考に「二次ソースのみ・一次未確認」と明記する
 - M365 Copilot Release Notes は、Microsoft Learn MCP が使えない環境でも WebSearch の二次要約で代替しない。**WebFetch で learn.microsoft.com を直接取得する**（Cloudflare 未使用のため 403 になりにくい）。出力が巨大な場合は保存されたファイルを分割して読み、最新2バッチ分の全項目（Word/Excel/PowerPoint/Teams 等のアプリ別項目を含む）を漏らさず確認する
 - 二次メディアの要約は「新着の存在に気づく」用途に限定する。ダイジェストに掲載する際は必ず一次ソースの URL を確認し、一次 URL を併記する
+- **Power Platform / Copilot Studio の GA 判定は Learn `planned-features` の緑チェックに置かない。** AI at Work roadmap（RSS `category`）の `status`（`In development` / `Rolling out` / `Launched`）で行う（B-046採用、2026-08-26）
+- **Copilot Studio What's New の `(Preview)` / `(Production-ready preview)` 表記は GA 根拠にしない**（B-023採用、2026-08-26）。Preview 表記のままの項目は、既存の Copilot Studio Blog（board RSS）に GA 宣言があるか突合してから提供段階を書く。`harnesses-overview` はソース登録しない。ページ本体が編集されても表記が直るとは限らない
+- **Learn の機能ページに掲載があることは提供中の根拠にならない**（B-024採用、2026-08-26）。撤回・ロールバック・一時停止・退役が一次ページに残る／載らないことがある
+  - 過去にダイジェストへ掲載した機能は、登録済み Tech Community board RSS（Microsoft 365 Copilot Blog / Copilot Studio Blog / SharePoint Blog）を週1回、機能名込みで照合する。タイトルまたは本文に `Update:` / `rolled back` / `paused` / `retired` / `retiring` を含む続報があれば、Learn の掲載有無より続報を優先する
+  - 新規 URL は足さない。`copilot/domain-exclusion` は 2026-08-26 再実測で HTTP 404 のためソース登録しない
+  - 続報が board RSS で取れない場合は「Learn には掲載あり・提供継続は未確認」と書き、導入可と断定しない
+- **Message Center 由来の項目は、Learn の機能ページに記載がないことが否定の根拠にならない**（B-036採用、2026-08-26）。MC 番号が索引に出たら Learn / Partner Center / 登録済み board RSS で裏取りし、取れなければ「MC 番号と要旨のみ・一次未確認」とする。`mc.merill.net` の本文到達は前提にしない
+- **複数の Learn ページが同一機能の開始日・提供状態を異なる値で書いている場合、どちらか一方を正として単独掲載しない**（B-041採用、2026-08-26）。両方の値と出典 URL をダイジェストに併記する。製品側（What's New 等）と基盤側（Entra / Power Platform 等）が食い違うときは基盤側のほうが実装に近いことが多いが断定しない。`.last-check-state.md` の該当ソース備考に食い違いを残して継続監視する
 - **「最新かどうか」は検索インデックスや RSS の並び順で判定しない。ページ本文の先頭を直接読む**（B-019 / B-020採用、2026-08-02）
   - M365 Copilot Release Notes: `microsoft_docs_search` の返す日付見出しの並びで最新バッチを判定しない。`microsoft_docs_fetch` で本文を取得し、先頭の `## ` 見出し（最新バッチ日）を読む
   - Microsoft 365 Blog（本体）: RSS の WebFetch が 200 でも先頭エントリが最新とは限らない。`site:` 付き WebSearch 照合を毎日併用し、`.last-check-state.md` の最新記事日付と突合する
