@@ -10,7 +10,7 @@
 - **Copilot Studio**（エージェント構築レイヤー）: 新機能（オーケストレーションモデル変更、コネクタ追加、VS Code拡張、Computer Use等）・破壊的変更をリリース初日に導入する方針
 - **Microsoft 365 Copilot**（エンドユーザーレイヤー）: Word/Excel/PowerPoint/Outlook/TeamsのAgent Mode、Copilot Chat、Researcher、Copilot Notebooks等。新機能・ライセンス変更・料金変更
 - **Power Platform**（基盤レイヤー）: Copilot Studioの基盤。Power Automate/Power Apps/Dataverse/AI Builderの変更がCopilot Studioに波及する
-- **Microsoft 365 Roadmap / Release Wave**（計画レイヤー）: 未来のリリース予定、GA時期、プレビュー開始。Purview連携、ガバナンス機能の方向性
+- **Microsoft 365 Roadmap（AI at Work）**（計画レイヤー）: 未来のリリース予定、GA時期、プレビュー開始。Purview連携、ガバナンス機能の方向性。Learn の Release Wave は 2026-11-15 退役（B-046）
 - **Microsoft の AI エージェント基盤**: Microsoft Agent 365、Azure AI Foundry（Copilot Studio連携部分）、サードパーティ連携（ServiceNow、Workday等）、MCP対応
 
 ### Microsoft 一次に新規がない日に広げてよい範囲（2026-07-26 追加）
