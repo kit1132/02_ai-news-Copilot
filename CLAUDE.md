@@ -74,7 +74,11 @@ git push origin HEAD:main           # ← 必ず main に直接 push する
 3. **カバレッジ自己チェックを実施する**（上記「⚠️ カバレッジ自己チェック」参照）
 4. `IMPROVEMENT-BACKLOG.md` を更新（新規提案の起票・既出提案の回数更新・障害の最終確認日更新。`output-style.md` の改善メモ規定参照）
 5. `files.json` の配列先頭に新ファイルのパス（`digests/YYYY/MM/ai-news-YYYY-MM-DD.md`）を追加
-6. **`git push origin HEAD:main` で main に直接 push する**（上の絶対ルール参照。`IMPROVEMENT-BACKLOG.md` を含めること）
+6. 更新タグを検査する。終了コードが 0 でなければ push しない
+   ```
+   python3 scripts/check-update-tags.py digests/YYYY/MM/ai-news-YYYY-MM-DD.md
+   ```
+7. **`git push origin HEAD:main` で main に直接 push する**（上の絶対ルール参照。`IMPROVEMENT-BACKLOG.md` を含めること）
 
 ## ルール参照
 
