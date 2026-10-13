@@ -3,12 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>新しい Copilot の変更点</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;600;700&display=swap">
 <style>
 :root {
+  color-scheme: light;
   --canvas-soft: #f6f5f4;
   --surface: #ffffff;
   --ink: rgba(0, 0, 0, 0.95);
@@ -51,47 +53,6 @@
   --shadow-1: rgba(0, 0, 0, 0.01) 0 0.175px 1.041px, rgba(0, 0, 0, 0.02) 0 0.8px 2.925px, rgba(0, 0, 0, 0.027) 0 2.025px 7.847px, rgba(0, 0, 0, 0.04) 0 4px 18px;
   --font-sans: "Inter", "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --canvas-soft: #1a1a19;
-    --surface: #242423;
-    --ink: #f1efed;
-    --ink-secondary: #d6d3cf;
-    --ink-muted: #a9a39c;
-    --ink-faint: #7d7872;
-    --hairline: #3a3836;
-    --primary: #5aa9f0;
-    --primary-active: #86c0f4;
-    --on-primary: #0a1622;
-    --secondary: #213183;
-    --on-secondary: #ffffff;
-    --tint-blue: #1b2a3a;
-    --tint-orange: #33241a;
-    --caution-ink: #f2a46b;
-    --admin-ink: #d6b6f6;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --canvas-soft: #1a1a19;
-  --surface: #242423;
-  --ink: #f1efed;
-  --ink-secondary: #d6d3cf;
-  --ink-muted: #a9a39c;
-  --ink-faint: #7d7872;
-  --hairline: #3a3836;
-  --primary: #5aa9f0;
-  --primary-active: #86c0f4;
-  --on-primary: #0a1622;
-  --secondary: #213183;
-  --on-secondary: #ffffff;
-  --tint-blue: #1b2a3a;
-  --tint-orange: #33241a;
-  --caution-ink: #f2a46b;
-  --admin-ink: #d6b6f6;
-  color-scheme: dark;
-}
-
 /* 提案資料デザイン — component styles. Values come from tokens.css (var(--…)); no raw colors here. */
 .pd-doc { background: var(--canvas-soft); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.85; letter-spacing: 0.04em; line-break: strict; overflow-wrap: anywhere; }
 .pd-doc h1, .pd-doc h2, .pd-doc h3 { margin: 0; text-wrap: balance; }
