@@ -163,7 +163,7 @@
 .pd-legend { display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-md); align-items: center; font-size: 13px; color: var(--ink-muted); }
 .pd-table--compare { table-layout: fixed; width: 100%; }
 .pd-table--compare th:nth-child(3),
-.pd-table--compare td:nth-child(3) { width: 8.5rem; white-space: nowrap; font-weight: 400; color: var(--ink-secondary); }
+.pd-table--compare td:nth-child(3) { width: 8.5rem; white-space: nowrap; font-weight: 400; color: var(--ink-secondary); vertical-align: middle; }
 .pd-table--compare td:first-child { white-space: normal; font-weight: 400; color: var(--ink-secondary); }
 .pd-table--compare th:nth-child(2) { color: var(--primary); }
 .pd-table--compare td:nth-child(2) { background: var(--tint-blue); color: var(--ink); }
@@ -243,7 +243,7 @@ body { margin: 0; background: var(--canvas-soft); padding-inline: var(--space-md
           <tr><td>質問は Chat、業務の委任は Cowork と、機能を切り替えて利用する必要がある</td><td>Chat と Cowork を Home に集約し、1か所から利用できる</td><td><span class="pd-badge"><span class="pd-dot"></span>対応予定</span></td></tr>
           <tr><td>利用する機能を、ユーザー自身が選んでから始める必要がある</td><td>目的を伝えるだけで、Copilot が Chat・Cowork・Code 等の適切な機能へ振り分ける（近日対応）</td><td><span class="pd-badge"><span class="pd-dot"></span>対応予定</span></td></tr>
           <tr><td>会議・チャット・文書・メール・アプリを行き来する中で、作業の状況を把握しにくい</td><td>最近の作業の確認、Copilot からの提案の受け取り、中断した作業の再開を Home で行える</td><td><span class="pd-badge"><span class="pd-dot"></span>対応予定</span></td></tr>
-          <tr><td><figure><img src="nc-img/hero.webp" width="1200" height="500" alt="現在の Copilot アプリの画面イメージ。上部に Chat と Cowork の切り替えがある"><figcaption>現在の画面：上部で Chat と Cowork を切り替え（Microsoft 社の紹介画像）</figcaption></figure></td><td><figure><img src="nc-img/home.webp" width="1280" height="720" alt="新しい Copilot の Home 画面。左に Home・Code・Autopilot の切り替えがあり、入力欄で Chat と Cowork を選べる"><figcaption>Home 画面：Chat と Cowork を1か所から開始（日本マイクロソフトの紹介記事より）</figcaption></figure></td><td></td></tr>
+          <tr><td><figure><img src="nc-img/hero.webp" width="1200" height="500" alt="現在の Copilot アプリの画面イメージ。上部に Chat と Cowork の切り替えがある"><figcaption>現在の画面：上部で Chat と Cowork を切り替え（Microsoft 社の紹介画像）</figcaption></figure></td><td><figure><img src="nc-img/home.webp" width="1280" height="720" alt="新しい Copilot の Home 画面。左に Home・Code・Autopilot の切り替えがあり、入力欄で Chat と Cowork を選べる"><figcaption>Home 画面：Chat と Cowork を1か所から開始（日本マイクロソフトの紹介記事より）</figcaption></figure></td><td><span class="pd-badge"><span class="pd-dot"></span>対応予定</span></td></tr>
         </tbody>
       </table></div>
       <div class="pd-note pd-note--loss"><p class="pd-note__label"><span class="pd-dot pd-dot--orange"></span>できなくなること・変わること</p><ul><li>画面上の「エージェント」ページは「プラグイン」ページに置き換わります（エージェント自体は、プラグインの中で引き続き利用できます）</li><li>アプリ名は「Microsoft 365 Copilot」から「Microsoft Copilot」に変わり、主な接続先は copilot.cloud.microsoft に移行します</li></ul></div>
@@ -261,7 +261,7 @@ body { margin: 0; background: var(--canvas-soft); padding-inline: var(--space-md
           <tr><td>Copilot の回答を各アプリへ転記する際に、書式の崩れや版の分散が発生しやすい</td><td>Copilot の画面上で、編集可能な文書・ブック・プレゼンテーションを直接作成・更新できる</td><td><span class="pd-badge"><span class="pd-dot pd-dot--green"></span>対応済み</span></td></tr>
           <tr><td>別のアプリで、作業の背景を改めて説明し直す必要がある</td><td>会話と並べてファイルを表示し、会話の流れのまま追加の指示や直接編集で仕上げられる</td><td><span class="pd-badge"><span class="pd-dot pd-dot--green"></span>対応済み</span></td></tr>
           <tr><td>下書きが複数でき、内容をすり合わせる手間がある</td><td>同じファイル上で共同編集でき、変更はリアルタイムに反映される</td><td><span class="pd-badge"><span class="pd-dot pd-dot--green"></span>対応済み</span></td></tr>
-          <tr><td>Word・Excel・PowerPoint の各アプリの画面内で Copilot を利用</td><td><figure><img src="nc-img/library.webp" width="975" height="609" alt="Copilot の Library 画面。文書・プレゼンテーション・ブックの新規作成と、最近のファイルの一覧"><figcaption>Library 画面：作成したファイルの一覧と新規作成（Microsoft 社の紹介記事より）</figcaption></figure></td><td></td></tr>
+          <tr><td>Word・Excel・PowerPoint の各アプリの画面内で Copilot を利用</td><td><figure><img src="nc-img/library.webp" width="975" height="609" alt="Copilot の Library 画面。文書・プレゼンテーション・ブックの新規作成と、最近のファイルの一覧"><figcaption>Library 画面：作成したファイルの一覧と新規作成（Microsoft 社の紹介記事より）</figcaption></figure></td><td><span class="pd-badge"><span class="pd-dot pd-dot--green"></span>対応済み</span></td></tr>
         </tbody>
       </table></div>
       <div class="pd-note pd-note--loss"><p class="pd-note__label"><span class="pd-dot pd-dot--orange"></span>できなくなること・変わること</p><ul><li>公開情報上、廃止される機能の記載はありません。従来どおり、Word・Excel・PowerPoint の各アプリでも作業を続けられます</li></ul></div>
@@ -279,7 +279,7 @@ body { margin: 0; background: var(--canvas-soft); padding-inline: var(--space-md
           <tr><td>小規模なツールの作成にも、開発の知識や専用ツールの習得が必要</td><td>作りたいものを自然言語で伝えるだけで、Copilot が作成する</td><td><span class="pd-badge"><span class="pd-dot"></span>対応予定</span></td></tr>
           <tr><td>業務の成果物は主に文書・表・プレゼンテーションで、目的に合わせた道具は別途用意が必要</td><td>アプリ、進捗管理、ダッシュボード、自動化、ワークフローまで作成できる</td><td><span class="pd-badge"><span class="pd-dot"></span>対応予定</span></td></tr>
           <tr><td>作ったツールを安全に動かし、チームで共有する仕組みを別途用意する必要がある</td><td>隔離された環境（サンドボックス）で実行され、組織のテナント内でホストして共有できる</td><td><span class="pd-badge"><span class="pd-dot"></span>対応予定</span></td></tr>
-          <tr><td>開発環境や Power Apps 等の専用ツールで作成</td><td><figure><img src="nc-img/code.webp" width="1280" height="720" alt="新しい Copilot の Code 画面。ダッシュボード作成の指示欄と、ツールやサイトの作成例"><figcaption>Code 画面：自然言語でツールやダッシュボードを作成（日本マイクロソフトの紹介記事より）</figcaption></figure></td><td></td></tr>
+          <tr><td>開発環境や Power Apps 等の専用ツールで作成</td><td><figure><img src="nc-img/code.webp" width="1280" height="720" alt="新しい Copilot の Code 画面。ダッシュボード作成の指示欄と、ツールやサイトの作成例"><figcaption>Code 画面：自然言語でツールやダッシュボードを作成（日本マイクロソフトの紹介記事より）</figcaption></figure></td><td><span class="pd-badge"><span class="pd-dot"></span>対応予定</span></td></tr>
         </tbody>
       </table></div>
       <div class="pd-note pd-note--loss"><p class="pd-note__label"><span class="pd-dot pd-dot--orange"></span>できなくなること・変わること</p><ul><li>公開情報上、廃止される機能の記載はありません</li></ul></div>
@@ -297,7 +297,7 @@ body { margin: 0; background: var(--canvas-soft); padding-inline: var(--space-md
           <tr><td>業務の進捗確認や次の指示を、ユーザーが都度行う必要がある</td><td>名前・役割・目標を設定すると、指示を待たずに業務を遂行する</td><td><span class="pd-badge"><span class="pd-dot pd-dot--purple"></span>限定提供</span></td></tr>
           <tr><td>チャネルやスレッドを自分で確認し、フォローアップする必要がある</td><td>チャネル・スレッドの確認、フォローアップ、定期業務を Autopilot が実行する</td><td><span class="pd-badge"><span class="pd-dot pd-dot--purple"></span>限定提供</span></td></tr>
           <tr><td>ユーザーが対応できない間は、作業が進まない</td><td>クラウド上で稼働し、ユーザーの不在時も処理を継続する</td><td><span class="pd-badge"><span class="pd-dot pd-dot--purple"></span>限定提供</span></td></tr>
-          <tr><td>進捗の確認や次の指示を、ユーザーが都度行う</td><td><figure><img src="nc-img/autopilot.webp" width="1280" height="720" alt="新しい Copilot の Autopilot 画面。稼働状況の一覧と、サプライヤーレビューの指示欄"><figcaption>Autopilot 画面：稼働状況の確認と業務の指示（日本マイクロソフトの紹介記事より）</figcaption></figure></td><td></td></tr>
+          <tr><td>進捗の確認や次の指示を、ユーザーが都度行う</td><td><figure><img src="nc-img/autopilot.webp" width="1280" height="720" alt="新しい Copilot の Autopilot 画面。稼働状況の一覧と、サプライヤーレビューの指示欄"><figcaption>Autopilot 画面：稼働状況の確認と業務の指示（日本マイクロソフトの紹介記事より）</figcaption></figure></td><td><span class="pd-badge"><span class="pd-dot pd-dot--purple"></span>限定提供</span></td></tr>
         </tbody>
       </table></div>
       <div class="pd-note pd-note--loss"><p class="pd-note__label"><span class="pd-dot pd-dot--orange"></span>できなくなること・変わること</p><ul><li>「Scout」の名称は「Autopilot」に変わります。公開情報上、廃止される機能の記載はありません</li></ul></div>
