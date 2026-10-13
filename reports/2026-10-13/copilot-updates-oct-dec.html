@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Copilot 10〜12月の更新予定</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column for non-specialist readers. Notice first, then a short glossary, then dated items that change on their own, then a month rail. Each item says in plain words what it is and who it affects. */
+:root {
+  --bg: #f3f5f8;
+  --surface: #ffffff;
+  --ink: #18212c;
+  --muted: #566274;
+  --line: #d8dfe7;
+  --accent: #1d5a85;
+  --accent-soft: #e2ecf5;
+  --warn: #8a4a00;
+  --warn-soft: #fcefd9;
+  --ok: #24683f;
+  --ok-soft: #e0f1e6;
+  --roll: #0b6464;
+  --roll-soft: #d9efee;
+  --dev: #3d4b5d;
+  --dev-soft: #e6eaf0;
+  --font-body: "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", "Meiryo", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 0.9375rem;
+  --step-1: 1.0625rem;
+  --step-2: 1.3125rem;
+  --step-3: 1.625rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1419;
+    --surface: #161d25;
+    --ink: #e3e8ee;
+    --muted: #9aa6b5;
+    --line: #2a3542;
+    --accent: #7db2db;
+    --accent-soft: #172738;
+    --warn: #f0b45c;
+    --warn-soft: #2a1f10;
+    --ok: #7fcf9f;
+    --ok-soft: #13261b;
+    --roll: #6ccfcd;
+    --roll-soft: #112a2a;
+    --dev: #b3bfcd;
+    --dev-soft: #1f2832;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1419;
+  --surface: #161d25;
+  --ink: #e3e8ee;
+  --muted: #9aa6b5;
+  --line: #2a3542;
+  --accent: #7db2db;
+  --accent-soft: #172738;
+  --warn: #f0b45c;
+  --warn-soft: #2a1f10;
+  --ok: #7fcf9f;
+  --ok-soft: #13261b;
+  --roll: #6ccfcd;
+  --roll-soft: #112a2a;
+  --dev: #b3bfcd;
+  --dev-soft: #1f2832;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.8;
+  line-break: strict;
+  overflow-wrap: anywhere;
+  padding-inline: 16px;
+  padding-block: 32px 56px;
+}
+.wrap {
+  max-width: 46rem;
+  margin-inline: auto;
+  display: grid;
+  gap: 40px;
+}
+h1, h2, h3 { text-wrap: balance; line-height: 1.45; margin: 0; }
+p { margin: 0; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+/* Header and notice */
+.head { display: grid; gap: 14px; }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+h1 { font-size: var(--step-3); font-weight: 700; word-break: keep-all; }
+.notice {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  padding: 14px 16px;
+  display: grid;
+  gap: 6px;
+}
+.notice-lead { font-weight: 700; font-size: var(--step-1); }
+.lede { font-size: var(--step-1); }
+
+/* Section headings */
+.section { display: grid; gap: 16px; }
+.section-head { display: grid; gap: 4px; }
+h2 { font-size: var(--step-2); font-weight: 700; }
+.section-note { font-size: var(--step-0); color: var(--muted); }
+
+/* Glossary */
+.glossary {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.glossary dt, .glossary dd {
+  margin: 0;
+  padding: 10px 14px;
+  border-top: 1px solid var(--line);
+}
+.glossary dt:first-of-type, .glossary dt:first-of-type + dd { border-top: 0; }
+.glossary dt { font-weight: 700; }
+.glossary dd { min-width: 0; }
+
+/* Chips */
+.chip {
+  display: inline-block;
+  font-size: var(--step--1);
+  font-weight: 700;
+  line-height: 1.5;
+  padding: 1px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  text-align: center;
+}
+.chip-dev { color: var(--dev); background: var(--dev-soft); }
+.chip-roll { color: var(--roll); background: var(--roll-soft); }
+.chip-ok { color: var(--ok); background: var(--ok-soft); }
+.chip-plan { color: var(--accent); background: var(--accent-soft); }
+.chip-warn { color: var(--warn); background: var(--warn-soft); }
+.who {
+  display: inline-block;
+  font-size: var(--step--1);
+  line-height: 1.5;
+  padding: 0 7px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+
+/* How to read */
+.howto { display: grid; gap: 8px; }
+.howto-label { font-weight: 700; }
+.pairs { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; margin: 0 0 6px; padding: 0; }
+.pairs li { display: flex; gap: 8px; align-items: baseline; }
+
+/* Items that change on their own */
+.alerts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.alert {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 16px;
+  padding-block: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.alert-date {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--step-2);
+  line-height: 1.3;
+  color: var(--warn);
+  font-variant-numeric: tabular-nums;
+}
+.alert-body { display: grid; gap: 8px; min-width: 0; }
+.alert-title { font-size: var(--step-1); font-weight: 700; line-height: 1.6; }
+.qa { display: grid; gap: 2px; }
+.qa-q { font-size: var(--step--1); font-weight: 700; color: var(--muted); }
+.qa-todo {
+  background: var(--warn-soft);
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+.qa-todo .qa-q { color: var(--warn); }
+.src { font-size: var(--step--1); color: var(--muted); }
+
+/* Month rail */
+.month { display: grid; gap: 8px; }
+.month-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+h3 { font-size: var(--step-1); font-weight: 700; }
+.cy { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); }
+.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.row {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 6px 14px;
+  padding: 14px;
+  align-items: start;
+}
+.row + .row { border-top: 1px solid var(--line); }
+.row > .chip { margin-top: 3px; }
+.row-body { min-width: 0; display: grid; gap: 4px; }
+.row-title { font-weight: 700; line-height: 1.6; }
+.row-desc { font-size: var(--step-0); }
+
+/* Events */
+.events { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.event { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 12px; align-items: baseline; }
+.event-date { font-family: var(--font-mono); font-weight: 500; font-variant-numeric: tabular-nums; }
+.event-name { font-weight: 700; }
+
+/* Closing notice */
+.closing {
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+}
+.closing ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.foot { font-size: var(--step--1); color: var(--muted); }
+
+@media (max-width: 560px) {
+  .alert { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .row { grid-template-columns: minmax(0, 1fr); }
+  .row > .chip { justify-self: start; margin-top: 0; }
+  .glossary { grid-template-columns: minmax(0, 1fr); }
+  .glossary dd { border-top: 0; padding-top: 0; }
+  .event { grid-template-columns: minmax(0, 1fr); gap: 0; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="head">
+    <p class="eyebrow">2026年10月13日時点</p>
+    <h1>Microsoft の AI（Copilot）関連　10〜12月のアップデート予定</h1>
+    <div class="notice" role="note">
+      <p class="notice-lead">このページは、Microsoft が公開している情報をもとに、個人でまとめた参考情報です。</p>
+      <p>Microsoft の公式発表ではありません。予定は変更・延期されることがあります。正確な内容は、各項目の「出典」リンク（Microsoft の公式ページ）で、ご自身でもご確認ください。</p>
+    </div>
+    <p class="lede">10〜12月にいくつかの予定があります。多くは便利な機能の追加ですが、4件は料金や設定が自動で変わるもので、システム担当・管理者の方による確認が必要です。</p>
+  </header>
+
+  <section class="section" aria-labelledby="h-words">
+    <div class="section-head">
+      <h2 id="h-words">はじめに：このページに出てくる言葉</h2>
+      <p class="section-note">わからない言葉があれば、ここに戻って確認してください。</p>
+    </div>
+    <dl class="glossary">
+      <dt>Copilot（コパイロット）</dt>
+      <dd>Word・Excel・Teams などに組み込まれている、Microsoft の AI アシスタントです。質問に答えたり、文章や資料づくりを手伝ったりします。</dd>
+      <dt>AI エージェント</dt>
+      <dd>決まった仕事を任せられるように設定した AI のことです。「特定の業務を担当する AI の係」のようなものです。</dd>
+      <dt>Copilot Studio</dt>
+      <dd>AI エージェントを自分たちで作るためのツールです。</dd>
+      <dt>Power Apps / Power Automate</dt>
+      <dd>プログラミングの知識が少なくても、業務用のアプリ（Power Apps）や、作業を自動で行う仕組み（Power Automate）を作れるツールです。</dd>
+      <dt>クレジット</dt>
+      <dd>AI を使った分だけ減っていく「利用ポイント」のようなものです。使ったクレジットの分が料金になります。</dd>
+      <dt>正式提供</dt>
+      <dd>誰でも正式に使える状態になることです（英語では GA と書かれます）。</dd>
+      <dt>お試し版</dt>
+      <dd>正式提供の前に、先に試せる段階のことです（英語ではプレビューと書かれます）。</dd>
+      <dt>管理者</dt>
+      <dd>会社の Microsoft 365 の設定や契約を管理している担当者・部署（情報システム部門など）のことです。</dd>
+      <dt>ロードマップ</dt>
+      <dd>Microsoft が公開している「今後の予定の一覧」です。各項目に番号（No.）が付いています。</dd>
+    </dl>
+  </section>
+
+  <section class="section" aria-labelledby="h-howto">
+    <div class="section-head">
+      <h2 id="h-howto">このページの見方</h2>
+    </div>
+    <div class="howto">
+      <p class="howto-label">いまの状態</p>
+      <ul class="pairs">
+        <li><span class="chip chip-dev">開発中</span>まだ使えません</li>
+        <li><span class="chip chip-roll">展開中</span>順番に使えるようになっています</li>
+        <li><span class="chip chip-ok">提供済み</span>もう使えます</li>
+        <li><span class="chip chip-plan">予定</span>時期が告知されているもの</li>
+      </ul>
+      <p class="howto-label">関係する人</p>
+      <ul class="pairs">
+        <li><span class="who">使う人</span>ふだん Copilot などを使う方</li>
+        <li><span class="who">作る人</span>アプリや AI エージェントを作る方</li>
+        <li><span class="who">管理者</span>システム担当の方</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-alerts">
+    <div class="section-head">
+      <h2 id="h-alerts">管理者の方へ：料金や設定が自動で変わるもの（4件）</h2>
+      <p class="section-note">何もしなくても変わるので、システム担当・管理者の方は事前にご確認ください。</p>
+    </div>
+    <ol class="alerts">
+      <li class="alert">
+        <div class="alert-date">10月</div>
+        <div class="alert-body">
+          <div class="tags"><span class="chip chip-dev">開発中</span><span class="who">管理者</span></div>
+          <p class="alert-title">Copilot とのやり取りを保存するルールの一部が、Copilot に効かなくなる</p>
+          <div class="qa">
+            <p class="qa-q">どういうこと？</p>
+            <p>会社によっては、Teams 用に作った古い「記録の保存ルール」（保持ポリシー）で、Copilot とのやり取りもあわせて保存しています。今回の変更で、この古いルールは Teams 専用になり、Copilot とのやり取りは保存の対象から外れます。</p>
+          </div>
+          <div class="qa qa-todo">
+            <p class="qa-q">確認すること</p>
+            <p>Copilot とのやり取りの保存を、この古いルールに頼っていないかを確認してください。</p>
+          </div>
+          <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=571306">ロードマップ No.571306</a>（英語）</p>
+        </div>
+      </li>
+      <li class="alert">
+        <div class="alert-date">11月</div>
+        <div class="alert-body">
+          <div class="tags"><span class="chip chip-plan">予定</span><span class="who">管理者</span></div>
+          <p class="alert-title">Power Apps などの業務データを、Copilot から使える設定が自動でオンになる</p>
+          <div class="qa">
+            <p class="qa-q">どういうこと？</p>
+            <p>Power Apps や Dynamics 365 に入っている業務データを、Copilot のチャットなどから検索・利用できる設定（Business Applications in Work IQ）が、これまで使ってきた環境でも自動でオンになります。新しく作った環境では、9/30 からすでにオンです。検索用のデータのぶん、保存容量（Dataverse の容量）も余分に使います。</p>
+          </div>
+          <div class="qa qa-todo">
+            <p class="qa-q">確認すること</p>
+            <p>Copilot から業務データを使わせたくない場合は、管理者が設定をオフにします（Microsoft 365 管理センター、または Power Platform 管理センター）。EU 地域、政府向けクラウド、試用・開発用の環境は対象外です。</p>
+          </div>
+          <p class="src">出典：<a href="https://learn.microsoft.com/en-us/power-platform/admin/business-applications-work-iq/default-settings">Microsoft Learn（10/7 更新）</a>（英語）</p>
+        </div>
+      </li>
+      <li class="alert">
+        <div class="alert-date">11/16</div>
+        <div class="alert-body">
+          <div class="tags"><span class="chip chip-plan">予定</span><span class="who">管理者</span><span class="who">使う人</span></div>
+          <p class="alert-title">営業向けの AI エージェント「Sales Development Agent」に料金がかかるようになる</p>
+          <div class="qa">
+            <p class="qa-q">どういうこと？</p>
+            <p>いまお試し版として提供されている営業向けの AI エージェントが、11/16 からクレジットを消費する（料金がかかる）ようになります。試しに動かしているだけの場合も対象です。</p>
+          </div>
+          <div class="qa qa-todo">
+            <p class="qa-q">確認すること</p>
+            <p>このエージェントを試している場合は、11/16 以降は料金が発生する点にご注意ください。使っていなければ影響はありません。</p>
+          </div>
+          <p class="src">出典：<a href="https://www.microsoft.com/en-us/copilot/blog/2026/10/08/bringing-crm-into-the-flow-of-work-and-agents-into-business-process-for-sales-and-service-teams/">Microsoft Copilot ブログ（10/8）</a>（英語）</p>
+        </div>
+      </li>
+      <li class="alert">
+        <div class="alert-date">12/1</div>
+        <div class="alert-body">
+          <div class="tags"><span class="chip chip-plan">予定</span><span class="who">管理者</span></div>
+          <p class="alert-title">新しく購入する「Copilot Business」は、使った分だけ料金がかかる設定が最初からオンになる</p>
+          <div class="qa">
+            <p class="qa-q">どういうこと？</p>
+            <p>販売パートナー経由で新しく購入する Copilot Business は、AI を使った分だけ料金がかかる仕組み（従量課金）が、最初から有効な状態で始まります。上限は1人あたり月 4,000 クレジット（100人なら月 40万クレジットまで）で、管理者が変更できます。すでに持っているライセンスや、大企業向けのプランは対象外です。当初は 11/2 の予定でしたが、12/1 に延期されました。</p>
+          </div>
+          <div class="qa qa-todo">
+            <p class="qa-q">確認すること</p>
+            <p>新しく購入する予定がある場合は、上限のクレジット数を管理者が確認・設定してください。</p>
+          </div>
+          <p class="src">出典：<a href="https://learn.microsoft.com/en-us/partner-center/announcements/2026-october">Partner Center 2026年10月のお知らせ</a>（英語）</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section" aria-labelledby="h-plan">
+    <div class="section-head">
+      <h2 id="h-plan">月ごとの予定</h2>
+      <p class="section-note">月はあくまで目安です。予定より遅れることもよくあります。</p>
+    </div>
+
+    <div class="month">
+      <div class="month-head"><h3>10月</h3><span class="cy">October CY2026</span></div>
+      <ul class="rows">
+        <li class="row">
+          <span class="chip chip-dev">開発中</span>
+          <div class="row-body">
+            <p class="row-title">Copilot のチャットで、使った分だけ料金がかかる AI モデルも選べるようになる</p>
+            <p class="row-desc">チャット画面の「モデルの選択」から選べます。ただし、管理者がその人にクレジットを割り当てた場合だけ使えます。使い切ったら、管理者に追加をお願いします。</p>
+            <div class="tags"><span class="who">使う人</span><span class="who">管理者</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=571400">ロードマップ No.571400</a></p>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-dev">開発中</span>
+          <div class="row-body">
+            <p class="row-title">Copilot から、つながっている社外サービスのデータを登録・更新・削除できるようになる</p>
+            <p class="row-desc">これまでは社外サービスのデータを「読む」だけでしたが、書き込みもできるようになります。実行する前に、必ず確認の画面が出ます。管理者は、使わせたくないサービスを止められます。</p>
+            <div class="tags"><span class="who">使う人</span><span class="who">管理者</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=570964">ロードマップ No.570964</a></p>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-dev">開発中</span>
+          <div class="row-body">
+            <p class="row-title">Copilot Studio：社内で作った「スキル」を一覧から探して使い回せる（正式提供）</p>
+            <p class="row-desc">スキルとは、AI エージェントに覚えさせる手順や指示のまとまりです。承認済みのスキルを一覧から探して、自分のエージェントに追加できます。</p>
+            <div class="tags"><span class="who">作る人</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=571880">ロードマップ No.571880</a></p>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-dev">開発中</span>
+          <div class="row-body">
+            <p class="row-title">Copilot Studio：AI がエージェントの改善案を出してくれる（正式提供）</p>
+            <p class="row-desc">エージェントが過去に行った作業を AI が振り返り、改善案を出します。採用すると、改良版のコピーが作られます。</p>
+            <div class="tags"><span class="who">作る人</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=570432">ロードマップ No.570432</a></p>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-dev">開発中</span>
+          <div class="row-body">
+            <p class="row-title">Copilot Studio：パソコンの画面操作を AI が代わりに行う機能を組み込める（正式提供）</p>
+            <p class="row-desc">人がマウスやキーボードで行う操作を AI が代わりに行います。画面のデザインが多少変わっても対応できます。</p>
+            <div class="tags"><span class="who">作る人</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=562220">ロードマップ No.562220</a></p>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-dev">開発中</span>
+          <div class="row-body">
+            <p class="row-title">Copilot Studio：作った AI エージェントを、ほかの作る人と共有できる（正式提供）</p>
+            <p class="row-desc">「見るだけ」か「編集もできる」かを選んで共有できます。新しい作り方（GitHub Copilot ハーネス）で作ったエージェントが対象です。</p>
+            <div class="tags"><span class="who">作る人</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=569475">ロードマップ No.569475</a></p>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-dev">開発中</span>
+          <div class="row-body">
+            <p class="row-title">Copilot Studio：追加機能のセット（プラグイン）を探して使える（お試し版）</p>
+            <p class="row-desc">プラグインとは、AI エージェントにあとから追加できる機能のセットです。正式提供は11月の予定です。</p>
+            <div class="tags"><span class="who">作る人</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=570669">ロードマップ No.570669</a></p>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-dev">開発中</span>
+          <div class="row-body">
+            <p class="row-title">Copilot Notebooks：内容を音声でまとめて聞ける機能が強化される</p>
+            <p class="row-desc">Copilot Notebooks は、資料やメモを1か所に集めて Copilot に読ませられるノートです。音声のまとめを話題ごとに分けたり、討論の形式で聞いたりできるようになります。メール・会議・チャットの内容も参照できます。</p>
+            <div class="tags"><span class="who">使う人</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=570966">ロードマップ No.570966</a></p>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-plan">予定</span>
+          <div class="row-body">
+            <p class="row-title">Copilot の使い方を体験しながら学べる入門ガイド</p>
+            <p class="row-desc">管理者が社員に案内を配ると、10〜15分ほどで Copilot の使い方を体験しながら学べます。いまのところ、先行プログラム（Frontier）に参加している会社だけが対象で、英語のみです。10月下旬〜11月上旬に順番に提供される予定です。</p>
+            <div class="tags"><span class="who">使う人</span><span class="who">管理者</span></div>
+            <p class="src">出典：<a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/manage-copilot-onboarding">Microsoft Learn</a>（時期は Microsoft の管理者向けお知らせ MC1486291 の要約で確認）</p>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-roll">展開中</span>
+          <div class="row-body">
+            <p class="row-title">営業向け AI エージェントが Salesforce とつながる</p>
+            <p class="row-desc">Sales Development Agent が、Salesforce（他社の営業管理サービス）の見込み客の情報や営業活動の記録を扱えるようになります。順番に提供が始まっています。</p>
+            <div class="tags"><span class="who">使う人</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=574105">ロードマップ No.574105</a></p>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-ok">提供済み</span>
+          <div class="row-body">
+            <p class="row-title">Power Automate：パソコン作業の自動化を、決まった日時に自動で動かせる</p>
+            <p class="row-desc">Power Automate で作ったパソコン操作の自動化（デスクトップフロー）を、別の仕組みを用意しなくても定期的に動かせます。すでに使えます。</p>
+            <div class="tags"><span class="who">作る人</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=573278">ロードマップ No.573278</a></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="month">
+      <div class="month-head"><h3>11月</h3><span class="cy">November CY2026</span></div>
+      <ul class="rows">
+        <li class="row">
+          <span class="chip chip-dev">開発中</span>
+          <div class="row-body">
+            <p class="row-title">OneNote の Copilot が、ページの作成や書き換えまでできるようになる</p>
+            <p class="row-desc">ページ・セクション・ノートブックの作成や名前の変更、ページの内容の書き足しや書き換えを、Copilot にお願いできるようになります。</p>
+            <div class="tags"><span class="who">使う人</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=573446">ロードマップ No.573446</a></p>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-dev">開発中</span>
+          <div class="row-body">
+            <p class="row-title">Copilot Studio：AI エージェントに専用のアカウントを持たせられる（正式提供）</p>
+            <p class="row-desc">エージェントが自分のメールボックスや Teams の在席状態を持ち、チームの一員のように働けます。管理者は、人のアカウントと同じように権限や使い方を管理します。</p>
+            <div class="tags"><span class="who">作る人</span><span class="who">管理者</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=570430">ロードマップ No.570430</a></p>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-dev">開発中</span>
+          <div class="row-body">
+            <p class="row-title">Copilot Studio：AI エージェントの回答に、並べ替えなどができる表を表示できる（正式提供）</p>
+            <p class="row-desc">エージェントとのチャットの中で、並べ替えたり詳しく掘り下げたりできる表を表示できます（対応したツールを使う場合）。別の画面に移らずにデータを確認できます。</p>
+            <div class="tags"><span class="who">使う人</span><span class="who">作る人</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=570433">ロードマップ No.570433</a></p>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-dev">開発中</span>
+          <div class="row-body">
+            <p class="row-title">Power Platform：使えない機能にぶつかったとき、社内の案内が表示される（正式提供）</p>
+            <p class="row-desc">会社のルールで使えない機能を作る人が使おうとしたとき、管理者が用意した案内文や問い合わせ先が画面に表示されます（Maker guidelines）。</p>
+            <div class="tags"><span class="who">作る人</span><span class="who">管理者</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=570967">ロードマップ No.570967</a></p>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-dev">開発中</span>
+          <div class="row-body">
+            <p class="row-title">Power Apps のアプリのデータを、話しかけるだけで操作できる（正式提供）</p>
+            <p class="row-desc">Power Apps のアプリ（モデル駆動型アプリ）のデータを、Copilot Studio や AI とのチャットから言葉で検索・登録・更新できます。変更する前に、必ず確認があります。</p>
+            <div class="tags"><span class="who">使う人</span><span class="who">作る人</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=571888">ロードマップ No.571888</a></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="month">
+      <div class="month-head"><h3>12月</h3><span class="cy">December CY2026</span></div>
+      <ul class="rows">
+        <li class="row">
+          <span class="chip chip-warn">要確認</span>
+          <div class="row-body">
+            <p class="row-title">12/1：新しく購入する Copilot Business の料金設定が変わる</p>
+            <p class="row-desc">詳しくは、上の「管理者の方へ」をご覧ください。</p>
+            <div class="tags"><span class="who">管理者</span></div>
+          </div>
+        </li>
+        <li class="row">
+          <span class="chip chip-dev">開発中</span>
+          <div class="row-body">
+            <p class="row-title">Copilot の AI の処理を、自分の国の中で行える仕組み（正式提供）</p>
+            <p class="row-desc">AI の処理を、自分の国・地域の中で行えるようになります。最初の対象はオーストラリア・インド・UAE・英国・米国で、日本は含まれていません。</p>
+            <div class="tags"><span class="who">管理者</span></div>
+            <p class="src">出典：<a href="https://www.microsoft.com/microsoft-365/roadmap?id=571886">ロードマップ No.571886</a></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-events">
+    <div class="section-head">
+      <h2 id="h-events">イベント</h2>
+      <p class="section-note">この時期には、新しい発表が追加されることがあります。</p>
+    </div>
+    <ul class="events">
+      <li class="event"><span class="event-date">10/27〜29</span><span><span class="event-name">PPCC 2026</span>：Power Apps・Power Automate などを使う人向けの大型イベントです（米国ラスベガス）。</span></li>
+      <li class="event"><span class="event-date">11/17〜20</span><span><span class="event-name">Microsoft Ignite</span>：Microsoft が毎年開く大型イベントです（現地とオンライン）。</span></li>
+    </ul>
+  </section>
+
+  <section class="closing" aria-labelledby="h-closing">
+    <h2 id="h-closing">最後に：内容のご確認のお願い</h2>
+    <ul>
+      <li>このページは、Microsoft が公開している情報をもとに、個人でまとめた参考情報です。Microsoft の公式発表ではありません。</li>
+      <li>予定の月はあくまで目安です。たとえば、9月に正式提供の予定だった Copilot Studio の機能14件のうち、10/13 時点でロードマップ上の状態が「展開中」「提供済み」に変わったのは2件だけでした。</li>
+      <li>正確な内容は、各項目の「出典」リンク（Microsoft の公式ページ）で、必ずご自身でご確認ください。リンク先は英語ですが、ブラウザの翻訳機能で日本語にして読めます。</li>
+      <li>予定の一覧は <a href="https://www.microsoft.com/microsoft-365/roadmap">Microsoft 365 ロードマップ</a> で、番号（No.）を入力して検索できます。</li>
+    </ul>
+  </section>
+
+  <p class="foot">2026年10月13日 作成。出典：Microsoft 365 ロードマップ、Microsoft Learn、Partner Center、Microsoft Copilot ブログ。</p>
+</main>
+</body>
+</html>

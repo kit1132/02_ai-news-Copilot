@@ -1,0 +1,64 @@
+【ご参考】Microsoft の AI（Copilot）関連　今後のアップデート予定
+（2026年10月13日時点）
+
+⚠️ はじめに
+この内容は、Microsoft が公開している情報をもとに、私個人がまとめたものです。Microsoft の公式発表ではありません。
+予定は変更・延期されることがよくあります（実際、9月に予定されていた Copilot Studio の機能の多くは、まだ「開発中」のままです）。
+正確な内容は、最後に載せている出典（Microsoft の公式ページ）で、ご自身でもご確認ください。
+
+
+📅【10月の予定】
+
+① Copilot のチャットで、使った分だけ料金がかかるタイプの AI モデルも選べるようになる
+　→ 会社（管理者）が「クレジット」（利用ポイントのようなもの）を割り当てた人だけが使えます
+
+② Copilot から、連携している社外のサービスに、データの登録・更新・削除ができるようになる
+　→ 実行する前に、必ず確認の画面が出ます
+
+③ Copilot Notebooks の「内容を音声でまとめて聞ける機能」が強化される
+
+④ Copilot Studio（AI エージェントを自分で作れるツール）の新機能が、正式に使えるようになる予定
+　・社内で作った部品（スキル）を共有して使い回せる
+　・AI が、作ったエージェントの改善案を提案してくれる
+　・パソコンの画面操作を自動で行う機能を組み込める
+
+⑤ Power Automate（業務を自動化するツール）
+　・パソコン上の作業を自動化したもの（デスクトップフロー）を、決まった日時に自動で動かせる機能は、すでに使えるようになっています
+
+
+📅【11月の予定】
+
+① OneNote の Copilot が、ページの作成や内容の書き換えまでできるようになる
+
+② Copilot Studio で作った AI エージェントに、専用のアカウント（メールや Teams）を持たせられるようになる
+
+
+🔧【システム担当・管理者の方向け】料金や設定が自動で変わるもの
+
+・10月：Copilot とのやり取りの記録を保存するルールのうち、Teams 用の古いルールが Copilot には効かなくなる
+・11月：Power Apps などの業務データを Copilot から使える設定が、自動でオンになる（止めたい場合は管理者がオフにする）
+・11/16：営業向けの AI エージェント「Sales Development Agent」（お試し中）が、クレジットを消費する（有料になる）
+・12/1：販売パートナー経由で新しく購入する「Copilot Business」は、使った分だけ料金がかかる設定が最初からオンになる（上限は1人あたり月4,000クレジットで、管理者が変更可能）
+
+
+🗓【イベント】
+
+・10/27〜29：Power Platform の大型イベント（PPCC）
+・11/17〜20：Microsoft の年次イベント「Ignite」
+　→ この時期に、新しい発表が追加される可能性があります
+
+
+🔗【出典】ご自身でのご確認用
+
+・Microsoft 365 ロードマップ（予定の一覧）
+　https://www.microsoft.com/microsoft-365/roadmap
+・Copilot Business の料金設定の変更
+　https://learn.microsoft.com/en-us/partner-center/announcements/2026-october
+・業務データを Copilot から使える設定が自動でオンになる件
+　https://learn.microsoft.com/en-us/power-platform/admin/business-applications-work-iq/default-settings
+・Sales Development Agent の有料化
+　https://www.microsoft.com/en-us/copilot/blog/2026/10/08/bringing-crm-into-the-flow-of-work-and-agents-into-business-process-for-sales-and-service-teams/
+※ リンク先は英語のページです（ブラウザの翻訳機能で日本語にできます）
+
+
+※ 繰り返しになりますが、上記は個人でまとめた参考情報です。実際の提供時期や内容は、必ず出典でご確認ください。

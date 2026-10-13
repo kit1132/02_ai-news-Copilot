@@ -1,0 +1,31 @@
+{
+  "v": 3,
+  "assetGroups": {
+    "Other": {
+      "files": {},
+      "name": "Other",
+      "order": []
+    }
+  },
+  "blobs": {},
+  "createdOnFiles": {
+    "at": "2026-10-12T03:13:12.950Z",
+    "v": 1
+  },
+  "docs": {
+    "sections": []
+  },
+  "groups": [
+    "Other"
+  ],
+  "layout": "files",
+  "libraries": [],
+  "sections": {},
+  "title": "提案資料デザイン",
+  "lastChange": {
+    "by": "Claude",
+    "at": "2026-10-13T07:09:59Z",
+    "via": "Claude Code",
+    "note": "Comparison を課題と対応の対＋判定の形式に変更"
+  }
+}
