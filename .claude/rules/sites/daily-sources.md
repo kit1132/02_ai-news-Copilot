@@ -40,11 +40,14 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 
 ### Microsoft 365 Roadmap
 - URL: https://www.microsoft.com/en-us/microsoft-365/roadmap
+- RSS URL（優先）: https://www.microsoft.com/releasecommunications/api/v2/m365/rss
+- API URL: https://www.microsoft.com/releasecommunications/api/v1/m365 （機能 ID 単位の JSON。status・GA 予定月・製品タグを読む）
 - 検索キーワード（WebSearch用）: `Microsoft 365 roadmap Copilot Studio agent 2026`
-- 取得方法: WebSearch
-- 注目点: リリース予定機能、GA時期、プレビュー開始。Release Notesが「過去の変更」なのに対し、こちらは「未来の予定」を追う情報源
+- 取得方法: RSS → API → WebSearch
+- 注目点: リリース予定機能、GA時期、プレビュー開始。Release Notesが「過去の変更」なのに対し、こちらは「未来の予定」を追う情報源。**GA の判定は Roadmap 項目の status の変化（`In development` → `Rolling out` → `Launched`、または `Cancelled`）と製品ブログの GA 宣言で行う。What's New の Preview 表記や Release Wave の緑チェックは根拠にしない**
+- 新規判定: RSS の `pubDate` をバッチ（同じ時刻帯の一括起票）単位で見て、前回確認以降のバッチを新規とする。総項目数の増減では判定しない（新規バッチの件数と総項目数の増分が一致しない実例がある）
 - 頻度: 毎日確認
-- 備考: SPA/動的ページのためWebFetchでは中身が取れない。WebSearchをプライマリとする
+- 備考: Power Platform / Dynamics 365 のリリース計画（Release Wave）は 2026年10月に Microsoft Learn でアーカイブされ、計画情報はこの Roadmap（AI at Work roadmap。`aka.ms/AIatWorkRoadmap` も同じページへ転送）に統合された。Release Planner は 2026-11-15 までに退役する。旧 `release-plan/` 配下の 301・404 は障害として記録しない。Roadmap の Web ページは SPA で WebFetch では中身が取れないため、RSS・API を使う（B-046・B-047 採用、2026-10-19）
 
 ### Microsoft Copilot Blog
 - URL: https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/
@@ -102,22 +105,6 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 注目点: Power Apps固有の新機能（モダンコントロール、コードアプリGA、vibe.powerapps.com（AIコードアプリビルダー、Public Preview）、MCP Server連携）。月次更新記事あり
 - 頻度: 毎日確認
 - 備考: Power Platform Blogの子カテゴリ。JCB案件のPower Apps研修に直結する情報源
-
-### Copilot Studio Release Wave（計画機能一覧）
-- URL: https://learn.microsoft.com/en-us/power-platform/release-plan/2026wave1/microsoft-copilot-studio/planned-features
-- 検索キーワード（WebSearch用）: `Copilot Studio release wave planned features 2026`
-- 取得方法: WebFetch → WebSearch
-- 注目点: 半期ごとの計画機能リスト。Preview/GA予定時期が一覧化されている
-- 頻度: 週1〜2回確認（更新頻度が低いため）
-- 備考: Wave切替時（4月・10月頃）にURLパスが変わる（`2026wave1` → `2026wave2` 等）。WebFetchが404を返した場合はWebSearchで最新Waveページを特定すること
-
-### Power Platform Release Wave（全体版）
-- URL: https://learn.microsoft.com/en-us/power-platform/release-plan/2026wave1/
-- 検索キーワード（WebSearch用）: `Power Platform release wave 2026 planned features`
-- 取得方法: WebFetch → WebSearch
-- 注目点: Copilot Studio以外を含むPower Platform全体の計画機能一覧。Power Apps/Power Automate/Dataverse/Power Pages/ガバナンス・管理のRelease Wave
-- 頻度: 週1〜2回確認（更新頻度が低いため）
-- 備考: Copilot Studio Release Waveと同じタイミングでWave切替が発生する。WebFetchが404を返した場合はWebSearchで最新Waveページを特定すること
 
 ### Power Platform Released Versions
 - URL: https://learn.microsoft.com/en-us/power-platform/released-versions/
