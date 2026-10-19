@@ -114,10 +114,14 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - URL（What's New）: https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/whats-new
 - URL（モデル）: https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/cowork-models
 - URL（管理者統制）: https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/cowork-admin-governance
+- URL（前提条件）:
+  - https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/cowork-local-browser
+  - https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/cowork-network-endpoints
+  - https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/cowork-plugin-development
 - 取得方法: Microsoft Learn MCP → WebFetch
 - 注目点: 月次の新機能節、モデルピッカーと effort レベル、管理者統制と使用量ベース課金
-- 頻度: 毎日確認（What's New）／週1回確認（`cowork-models`・`cowork-admin-governance` の精読）
-- 備考: **モデルの追加・退役は What's New に載らず `cowork-models` にしか現れない。** 状態ファイルでは「Copilot Cowork What's New」「Copilot Cowork（モデル・ブラウザー統制）」の2節に記録する（B-048採用、2026-10-19）
+- 頻度: 毎日確認（What's New）／週1回確認（`cowork-models`・`cowork-admin-governance`・前提条件の3ページの精読）
+- 備考: **モデルの追加・退役は What's New に載らず `cowork-models` にしか現れない。** 状態ファイルでは「Copilot Cowork What's New」「Copilot Cowork（モデル・ブラウザー統制）」の2節に記録する（B-048採用、2026-10-19）。前提条件の3ページは `ms.date` が動いた日に本文の数値（必要な Edge の最低版、エンドポイントのホストパターン・タイムアウト・App ID、プラグインの付随ファイルの数とサイズの上限、SKILL.md のトークン上限）を読み直し、状態ファイルに残した前回の値と突き合わせる（B-072採用、2026-10-20。実例: 9/19 に必要な Edge が 150 系から 152 系に上がったのを21日間見逃した）
 
 ---
 
@@ -138,12 +142,6 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 注目点: Power Apps固有の新機能（モダンコントロール、コードアプリGA、vibe.powerapps.com（AIコードアプリビルダー、Public Preview）、MCP Server連携）。月次更新記事あり
 - 頻度: 毎日確認
 - 備考: Power Platform Blogの子カテゴリ。JCB案件のPower Apps研修に直結する情報源
-
-### Power Platform Released Versions
-- URL: https://learn.microsoft.com/en-us/power-platform/released-versions/
-- 取得方法: WebFetch
-- 注目点: Copilot StudioはPower Platform基盤のため、基盤側のバージョン変更が影響する。Power Apps/Power Automate/Copilot Studioの各リージョン展開状況
-- 頻度: 毎日確認
 
 ### Microsoft 365 Developer Blog
 - URL: https://devblogs.microsoft.com/microsoft365dev/
@@ -190,6 +188,14 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 注目点: 月次「What's new in Agent 365」記事、Agent Registry と Registry sync、マルチテナント管理、Copilot Credits のコスト管理
 - 頻度: 毎日確認
 - 備考: `ai-tools.md` が対象とする Microsoft Agent 365 の製品ブログ。HTML ページは取得できないため RSS を使う。旧 `board.id=Agent365Blog` は 200・`<item>` 0件を返す（B-032採用、2026-10-19）
+
+### SharePoint Blog（Tech Community・公式）
+- RSS URL（取得はこちら必須）: https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=SPBlog
+- 検索キーワード（WebSearch用）: `site:techcommunity.microsoft.com "Copilot in SharePoint" 2026`
+- 取得方法: RSS（`curl --compressed`）→ WebSearch
+- 注目点: 月次「What's New in Copilot in SharePoint」記事、Copilot in SharePoint の提供形態・管理者制御・Copilot Credits を使う機能
+- 頻度: 毎日確認
+- 備考: `ai-tools.md` が対象とする「SharePoint の AI 機能」の一次。記事の HTML は 403 のことがあるが、RSS が本文を含む。`board.id=SPBlog` は旧 ID のまま有効。`<item>` が0件なら改称を疑う（`fetch-flow.md`「200 を返すが中身が空のフィードの扱い」）。状態ファイルでは「SharePoint Blog / Copilot in SharePoint」節に記録する（B-015採用、2026-10-20。未登録の間に 10/15 の記事を取りこぼした）
 
 ### Qiita タグフィード（日本語実務情報）
 - RSS URL（すべて巡回）:
@@ -279,6 +285,30 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 注目点: 講師主導コース「MS-4005 Craft effective prompts for Microsoft 365 Copilot」の全9モジュール動画版コレクション。モジュール追加・内容更新の検知。プロンプト研修コンテンツのネタ元
 - 頻度: 週1回確認（ほぼ静的な学習コンテンツのため変更検知のみ）
 - 備考: 2026-07-23 追加（kit 指示）。コレクションページ本体は SPA のため WebFetch では中身が取れない。`/api/lists/<コレクションID>` の JSON なら取得可（2026-07-23 疎通確認済み）
+
+### Power Platform Released Versions
+- URL: https://learn.microsoft.com/en-us/power-platform/released-versions/copilotstudio
+- 取得方法: WebFetch
+- 注目点: Copilot StudioはPower Platform基盤のため、基盤側のバージョン変更が影響する。Power Apps/Power Automate/Copilot Studioの各リージョン展開状況
+- 頻度: 週1回確認（火曜）（B-037採用、2026-10-20）
+- 備考: 追跡対象は Copilot Studio のページ（URL を索引ページ `released-versions/` から差し替えた）。2026-06-30 の 2026.6.3 以降、10/19 時点で110日新しいビルドが出ていない（本文の「This page is updated each week on Tuesday.」は実態と合わない）。**新しいビルドが出たら毎日確認に戻す。** Copilot Studio の機能変更の検知を本ソースに頼らない（B-037採用、2026-10-20）
+
+### Copilot Studio モデル可用性一覧
+- URL（標準ハーネス）: https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-select-agent-model
+- URL（GitHub Copilot ハーネス）:
+  - https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/authoring-agent-model-availability
+  - https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/authoring-select-agent-model
+- 取得方法: Microsoft Learn MCP → WebFetch。`ms.date` を確認し、動いていたら表を読む
+- 注目点: 可用性表の Retired / Default の変化、地域列の追加、experimental / preview からの昇格
+- 頻度: 週1回確認（Copilot Cowork の `cowork-models` と同じ日）
+- 備考: モデル表は告知より大きく遅れる（9/30 の TC 告知のモデル2件は、10/19 時点でどの表にも未掲載）。表を毎日見ても検知は早くならないので、提供開始の判定は `fetch-flow.md`「一次情報源の『確認済み』基準」の告知の扱いに従う。状態ファイルでは「Copilot Studio モデル可用性一覧」節に記録する（B-035採用、2026-10-20）
+
+### Microsoft Purview - What's new
+- URL: https://learn.microsoft.com/en-us/purview/whats-new
+- 取得方法: Microsoft Learn MCP → WebFetch
+- 注目点: DLP for Microsoft 365 Copilot の新しい条件・アクション、Copilot Studio エージェントへの適用範囲、Preview から GA への移行
+- 頻度: 週1回確認
+- 備考: `ai-tools.md` の「Purview によるガバナンス」の一次。`updated_at`・`ms.date` が動いていたら、**月ごとの節の項目数だけを前回と比べ**、数が増えた節だけ本文を読む（過去の月への追記もこれで拾える）。掲載は Copilot・エージェント関連に限る。Copilot 関連の変更は Roadmap と Message Center が先に出すことが多い。状態ファイルでは「Microsoft Purview」節に記録する（B-016採用、2026-10-20）
 
 ---
 
