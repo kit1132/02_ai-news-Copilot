@@ -31,7 +31,7 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 備考: 2026-06-07・06-08 に Learn MCP 経由で安定取得を確認（B-001採用、2026-06-10）。WebFetch は403になる日がある
 
 ### Microsoft 365 Copilot Release Notes
-- URL: https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes
+- URL: https://learn.microsoft.com/en-us/microsoft-365/copilot/release-notes （旧 `copilot/microsoft-365/release-notes` は 301 で転送される。Learn MCP 経由では 301 が見えず転送先の本文が返る）（B-049採用、2026-10-19）
 - 取得方法: Microsoft Learn MCP → WebFetch
 - 注目点: M365 Copilot全体のリリースノート（Word/Excel/PowerPoint/Outlook/Teams各アプリ別）。Agent Mode、ライセンス変更、新エージェント追加
 - 頻度: 毎日確認
@@ -50,24 +50,25 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 備考: Power Platform / Dynamics 365 のリリース計画（Release Wave）は 2026年10月に Microsoft Learn でアーカイブされ、計画情報はこの Roadmap（AI at Work roadmap。`aka.ms/AIatWorkRoadmap` も同じページへ転送）に統合された。Release Planner は 2026-11-15 までに退役する。旧 `release-plan/` 配下の 301・404 は障害として記録しない。Roadmap の Web ページは SPA で WebFetch では中身が取れないため、RSS・API を使う（B-046・B-047 採用、2026-10-19）
 
 ### Microsoft Copilot Blog
-- URL: https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/
-- RSS URL（優先）: https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/feed/
+- URL: https://www.microsoft.com/en-us/copilot/blog/copilot-studio/
+- RSS URL（優先）: https://www.microsoft.com/en-us/copilot/blog/copilot-studio/feed/ （取得時は末尾に `?x=<当日MMDD>` を付ける）
 - 検索キーワード（WebSearch用）: `Microsoft Copilot Studio blog update 2026`
 - 取得方法: RSS → WebFetch → WebSearch
 - 注目点: Copilot Studioの月次「What's New」ブログ、マルチエージェント、MCP対応、新モデル追加、ガバナンス機能
 - 頻度: 毎日確認
-- 備考: Copilot Studio カテゴリの記事を対象とする。learn.microsoft.com の What's New とは別軸で、背景説明・戦略的文脈が含まれる。RSS URL は2026-06-10に疎通確認済み（microsoft.com は UA により 403 のことがあるため、失敗時は WebSearch へ）
+- 備考: Copilot Studio カテゴリの記事を対象とする。learn.microsoft.com の What's New とは別軸で、背景説明・戦略的文脈が含まれる。RSS URL は2026-06-10に疎通確認済み（microsoft.com は UA により 403 のことがあるため、失敗時は WebSearch へ）。旧 URL（`microsoft-copilot/blog/copilot-studio/` 配下）は 301 で上記へ転送される（RSS で 2026-09-17 に確認）（B-070採用、2026-10-19）。クエリ無しの RSS は CDN のキャッシュ版を返し、当日の新着を落とすことがある（B-077採用、2026-10-19）
 
 ### Power Platform Blog
 - URL: https://www.microsoft.com/en-us/power-platform/blog/
+- RSS URL（優先）: https://www.microsoft.com/en-us/power-platform/blog/feed/ （取得時は末尾に `?x=<当日MMDD>` を付ける）（B-077採用、2026-10-19）
 - 代替URL（子カテゴリ）:
   - Power Apps: https://www.microsoft.com/en-us/power-platform/blog/power-apps/
   - Power Automate: https://www.microsoft.com/en-us/power-platform/blog/power-automate/
 - 検索キーワード（WebSearch用）: `Power Platform blog update 2026`
-- 取得方法: WebFetch → WebSearch
+- 取得方法: RSS → WebFetch → WebSearch
 - 注目点: 月次「What's New in Power Platform」Feature Update記事が最重要。Power Apps/Power Automate/Copilot Studio横断の更新情報、ガバナンス・ライセンス変更、コミュニティ情報
 - 頻度: 毎日確認
-- 備考: 親ページで全体を確認後、子カテゴリの個別記事も高優先セクションで別途監視する
+- 備考: 親ページで全体を確認後、子カテゴリの個別記事も高優先セクションで別途監視する。**HTML 一覧ページは WebFetch が 200 でも記事が欠けることがある**（2026-07〜09 に月次記事を含む新着を最長11日取りこぼした）。新着の判定は親 RSS で行い、HTML 一覧を使うときは最新記事の日付ではなく、既知の公開済み記事が一覧に含まれているかで判断する（B-010採用、2026-10-19）
 
 ### M365 Message Center Archive
 - URL: https://mc.merill.net/
@@ -85,6 +86,38 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 注目点: Copilot Studio 製品チーム発の更新・技術・運用記事。マルチエージェント、Computer-using agents、ガバナンス白書（Administering and Governing Agents）等
 - 頻度: 毎日確認
 - 備考: 2026年春開設の専用公式ブログ（2026-06-10 追加）。**HTMLページは SSO リダイレクト/JSレンダリングのため取得不可。必ず RSS URL 経由で取得すること**
+
+### Copilot Studio ライセンス・課金
+- URL:
+  - https://learn.microsoft.com/en-us/microsoft-copilot-studio/harnesses-overview
+  - https://learn.microsoft.com/en-us/microsoft-copilot-studio/billing-licensing
+  - https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/billing-credit-overview
+  - https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/billing-credit-understand-display
+  - https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/billing-manage-buy-credits
+  - https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/enforcement-policy-credits
+  - https://learn.microsoft.com/en-us/microsoft-copilot-studio/requirements-messages-management （標準ハーネスの消費レート表）
+  - https://learn.microsoft.com/en-us/power-platform/admin/manage-copilot-studio-copilot-credits-capacity （PPAC の容量管理）
+  - https://learn.microsoft.com/en-us/power-platform/admin/manage-usage-github-copilot-harness （GitHub Copilot ハーネスの課金統制）
+- 取得方法: Microsoft Learn MCP → WebFetch
+- 注目点: ハーネス別の課金方式と課金開始点、Copilot Credits の消費レート、容量割当とオーバレージ、枯渇時のエンフォースメント、購入経路、従量課金の発効日
+- 頻度: 毎日確認（`updated_at` / `git_commit_id` の突合。値が動いた日だけ本文を読む）
+- 備考: 課金3本（`billing-credit-overview` / `billing-manage-buy-credits` / `enforcement-policy-credits`）は `agents-experience/` 配下へ移り、ルート直下の旧パスは 301 ではなく 404 を返す。**Learn にあるのはクレジットの消費レートまでで、1クレジットあたりの USD 単価は月次 PDF（`aka.ms/CopilotCredits/LicensingGuide`・取得不可）にしか無い。取れない間はダイジェストに単価を載せない。** 状態ファイルでは「Copilot Studio ハーネス・課金」「Copilot Studio 課金レート表」「Copilot Credits の容量管理（PPAC）」の3節に記録する（B-022採用、2026-10-19）
+
+### Copilot Studio ガイダンスハブ What's New
+- URL: https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/whats-new
+- 取得方法: Microsoft Learn MCP → WebFetch
+- 注目点: 運用ガイダンスの新規記事・改訂、参照アーキテクチャ・事例の追加、Copilot Agent Kit の機能追加
+- 頻度: 毎日確認（`updated_at` / `git_commit_id` の突合）
+- 備考: モデルのライフサイクル管理・ハーネス比較・クレジット統制など、他の登録ソースに出ない記事がここにだけ載る。新規記事の判定は索引の `updated_at` ではなく、`guidance/toc.json` のリンク集合の前日差分で行う（B-034採用、2026-10-19）
+
+### Copilot Cowork（What's New・モデル・管理者統制）
+- URL（What's New）: https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/whats-new
+- URL（モデル）: https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/cowork-models
+- URL（管理者統制）: https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/cowork-admin-governance
+- 取得方法: Microsoft Learn MCP → WebFetch
+- 注目点: 月次の新機能節、モデルピッカーと effort レベル、管理者統制と使用量ベース課金
+- 頻度: 毎日確認（What's New）／週1回確認（`cowork-models`・`cowork-admin-governance` の精読）
+- 備考: **モデルの追加・退役は What's New に載らず `cowork-models` にしか現れない。** 状態ファイルでは「Copilot Cowork What's New」「Copilot Cowork（モデル・ブラウザー統制）」の2節に記録する（B-048採用、2026-10-19）
 
 ---
 
@@ -124,7 +157,7 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 
 ### Tech Community - Microsoft 365 Copilot Blog
 - URL: https://techcommunity.microsoft.com/blog/microsoft365copilotblog
-- RSS URL（取得はこちら必須）: https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=Microsoft365CopilotBlog
+- RSS URL（取得はこちら必須）: https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-copilot-blog （旧 `board.id=Microsoft365CopilotBlog` は 200・`<item>` 0件を返す）（B-063採用、2026-10-19）
 - 検索キーワード（WebSearch用）: `site:techcommunity.microsoft.com "Microsoft 365 Copilot" 2026`
 - 取得方法: RSS → WebSearch
 - 注目点: 月次「What's New in Microsoft 365 Copilot」記事が最重要。公式Release Notesより詳細な背景説明・活用事例・管理者向けガイダンスが含まれる
@@ -132,14 +165,31 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 備考: HTMLページは SSO リダイレクトのため取得不可。board RSS は WebFetch で取得可能と確認済み（2026-06-10。旧備考「robots.txt でブロック」は board RSS には当てはまらない）
 
 ### Microsoft 365 Blog（本体）
-- URL: https://www.microsoft.com/en-us/microsoft-365/blog/
-- RSS URL（優先）: https://www.microsoft.com/en-us/microsoft-365/blog/feed/
+- URL: https://www.microsoft.com/en-us/copilot/blog/
+- RSS URL（優先）: https://www.microsoft.com/en-us/copilot/blog/feed/ （取得時は末尾に `?x=<当日MMDD>` を付ける）
 - 検索キーワード（WebSearch用）: `Microsoft 365 blog announcement Copilot 2026`
 - 取得方法: RSS → **WebSearch 照合（毎日併用）** → WebSearch
 - 注目点: M365 全体の大型発表・ライセンス/料金変更の初出（Microsoft Scout、Work IQ、M365 Copilot 新デザイン等）
 - 頻度: 毎日確認
 - 備考: 2026-06-10 追加。microsoft.com は UA により 403 を返すことがある。失敗時は WebSearch へ。日次の細かい更新は Release Notes / Roadmap と重複するため大型発表のみ拾う。
   ⚠️ **RSS の WebFetch が 200 でも先頭エントリが最新とは限らない。** `site:microsoft.com/en-us/microsoft-365/blog 2026` 等での WebSearch 照合を毎日併用し、`.last-check-state.md` の最新記事日付と突合すること。2026-08-01 は同一 RSS URL を WebFetch して「6/25 の Copilot in Excel 記事が最新」と判定したが、08-02 の取得では 7/30 の "The next measure of AI momentum is work transformed"（有償3,000万シート・展開ベンチマーク等の一次数値を含む）が先頭にあり、過去の全 digest に未掲載だった。**Release Notes の B-019 と同じ「単一の取得経路が最新項目を落とす」類型**（B-020採用、2026-08-02）
+  ⚠️ **旧 URL（`microsoft-365/blog/` 配下）は 301 で `copilot/blog/` 配下へ転送される（RSS で 2026-09-17 に確認）。転送先は Copilot ブログ全体のフィードで、M365 ブログ専用ではない。** Microsoft Copilot Blog（Copilot Studio カテゴリ）と守備範囲が重なる（B-070採用、2026-10-19）。クエリ無しの RSS は CDN のキャッシュ版を返し、当日の新着を落とすことがある（B-077採用、2026-10-19）
+
+### Microsoft Partner Center 月次アナウンス
+- URL（索引）: https://learn.microsoft.com/en-us/partner-center/announcements/
+- URL（当月）: `https://learn.microsoft.com/en-us/partner-center/announcements/<YYYY>-<month>`（例: https://learn.microsoft.com/en-us/partner-center/announcements/2026-october ）
+- 取得方法: Microsoft Learn MCP → WebFetch
+- 注目点: M365 Copilot / Agent 365 のライセンス前提条件、CSP での提供開始、スペシャライゼーション要件、価格改定、プロモーションの期限
+- 頻度: 毎日確認（`updated_at` の突合。月内にも項目の追記が続くため）
+- 備考: 登録ソースのどれにも出ない、期限つきのライセンス一次が載る。URL は `<年>-<月>` 形式で、旧 `<月>-<年>` 形式は 404 を返す。当月ページは索引から当月のリンクを取って開く（月初の数日は 404 のことがある）。状態ファイルでは「M365 Licensing / Packaging」節に記録する（B-013採用、B-067 を統合、2026-10-19）
+
+### Agent 365 Blog（Tech Community・公式）
+- RSS URL（取得はこちら必須）: https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=agent-365-blog
+- 検索キーワード（WebSearch用）: `site:techcommunity.microsoft.com "Agent 365" 2026`
+- 取得方法: RSS → WebSearch
+- 注目点: 月次「What's new in Agent 365」記事、Agent Registry と Registry sync、マルチテナント管理、Copilot Credits のコスト管理
+- 頻度: 毎日確認
+- 備考: `ai-tools.md` が対象とする Microsoft Agent 365 の製品ブログ。HTML ページは取得できないため RSS を使う。旧 `board.id=Agent365Blog` は 200・`<item>` 0件を返す（B-032採用、2026-10-19）
 
 ### Qiita タグフィード（日本語実務情報）
 - RSS URL（すべて巡回）:
@@ -217,10 +267,10 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 
 ### Power Platform 重要な変更（非推奨のお知らせ）
 - URL: https://learn.microsoft.com/en-us/power-platform/important-changes-coming
-- 取得方法: WebFetch → WebSearch
+- 取得方法: WebFetch → WebSearch。毎日 `curl` で `<meta name="updated_at">` と `git_commit_id` を読み、前日と同じなら本文の再取得を省く。値が動いた日だけ本文を取得して `## ` 見出しの数を突き合わせ、増えた節を先頭から読む（B-058採用、2026-10-19）
 - 注目点: Power Apps / Power Automate / Dataverse / コネクタの非推奨・廃止予定の公式一覧。破壊的変更の検知
-- 頻度: 週1回確認
-- 備考: 2026-06-10 追加。変更があった項目はダイジェストで「破壊的変更」として目立たせる。研修資料の陳腐化チェックにも使う
+- 頻度: 毎日確認（`updated_at` の突合のみ）（B-058採用、2026-10-19）
+- 備考: 2026-06-10 追加。変更があった項目はダイジェストで「破壊的変更」として目立たせる。研修資料の陳腐化チェックにも使う。**節は発効日を本文に書くだけで、追記から発効まで1週間を切ることがある**（2026-09-04 追記の項目は発効まで5日）（B-058採用、2026-10-19）
 
 ### M365 Copilot プロンプト作成コース（MS-4005 動画コレクション）
 - URL: https://learn.microsoft.com/collections/d4y3hkm5p12je2

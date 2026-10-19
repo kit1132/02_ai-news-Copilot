@@ -75,6 +75,15 @@ GA 追跡ができないまま復旧を待つ形になっていた。01_ai-news-
 
 本節は 01_ai-news-Master の 2026-08-07 追加分を移植したもの。
 
+## 200 を返すが中身が空のフィードの扱い（B-063採用、2026-10-19）
+
+**Tech Community の board RSS は、`board.id` が改称されると旧 ID が 404 ではなく HTTP 200・`<item>` 0件を返す。** HTTP ステータスでは異常と判別できない。
+
+- `<item>` が0件のときは「新着なし」と判定しない。まず `board.id` の改称（ソース定義の陳腐化）を疑い、ケバブケースの ID やカテゴリの HTML 一覧ページで現行の board と先頭記事の日付を確かめる
+- 改称は board 単位で段階的に進んでいる（2026-09-11 時点で `Microsoft365CopilotBlog` → `microsoft-copilot-blog`、`Agent365Blog` → `agent-365-blog`。`SPBlog` と `copilot-studio-blog` は旧 ID のまま有効）
+- `curl` で取るときは `--compressed` を付ける。付けないと gzip のまま渡り、生きている board も `<item>` 0件に見える
+- 改称を確かめたら `daily-sources.md` の RSS URL を差し替える提案を起票する。「既知の取得障害」には書かない
+
 ## フォールバック発生時の記録ルール
 
 フォールバック（手順2以降）を使用した場合、リポジトリルートの **`IMPROVEMENT-BACKLOG.md`「既知の取得障害」セクションを更新する**。ダイジェストの改善メモに書くのは「変化があったもの」だけ。
@@ -98,6 +107,8 @@ GA 追跡ができないまま復旧を待つ形になっていた。01_ai-news-
   - M365 Copilot Release Notes: `microsoft_docs_search` の返す日付見出しの並びで最新バッチを判定しない。`microsoft_docs_fetch` で本文を取得し、先頭の `## ` 見出し（最新バッチ日）を読む
   - Microsoft 365 Blog（本体）: RSS の WebFetch が 200 でも先頭エントリが最新とは限らない。`site:` 付き WebSearch 照合を毎日併用し、`.last-check-state.md` の最新記事日付と突合する
   - 共通の原則: **単一の取得経路だけで「新着なし」と結論しない。** 2026-07-30〜08-02 に両ソースで独立に発生し、Release Notes は10項目・M365 Blog は7/30 の一次数値記事を取りこぼした
+  - Tech Community の board RSS: エントリは投稿日の降順に並ばない。先頭 N 件で打ち切らず、全エントリの `pubDate` / `dc:date` を読んで前回確認より新しいものを全件拾う（B-033採用、2026-10-19）
+  - `www.microsoft.com` のブログ RSS（Microsoft Copilot Blog・Microsoft 365 Blog（本体）・Power Platform Blog）: クエリ無しの URL は CDN のキャッシュ版を返し、当日の新着を落とすことがある。末尾に `?x=<当日MMDD>` を付けて取得し、`lastBuildDate` と先頭記事を読む。「新着なし」と記録するときは、観測した先頭記事の日付とタイトルを残す（B-077採用、2026-10-19）
 
 ## アドホック二次メディアの扱い
 
