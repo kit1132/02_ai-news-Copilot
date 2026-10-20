@@ -310,6 +310,19 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 頻度: 週1回確認
 - 備考: `ai-tools.md` の「Purview によるガバナンス」の一次。`updated_at`・`ms.date` が動いていたら、**月ごとの節の項目数だけを前回と比べ**、数が増えた節だけ本文を読む（過去の月への追記もこれで拾える）。掲載は Copilot・エージェント関連に限る。Copilot 関連の変更は Roadmap と Message Center が先に出すことが多い。状態ファイルでは「Microsoft Purview」節に記録する（B-016採用、2026-10-20）
 
+### Learn 文書の週次突合（Copilot Studio・M365 Copilot）
+- URL（目次・この2本に固定）:
+  - https://learn.microsoft.com/en-us/microsoft-copilot-studio/toc.json
+  - https://learn.microsoft.com/en-us/microsoft-365/copilot/toc.json （`cowork/` を含む）
+- 取得方法: curl / WebFetch（toc.json と、各ページの `<meta>` を読む）
+- 注目点: What's New・Roadmap・ブログに出ない Learn ページの新設と改訂（課金・モデル・Cowork・管理者統制）
+- 頻度: 週1回確認（月曜）
+- 備考: 手順は次の4つ（B-074採用、2026-10-20。毎日・docset 全体の突合は重すぎて 10/17 に途絶えたため、週1回・目次2本に絞った。2026-10-20 時点で2本のリンクは計約670件）。
+  ① 2本の toc.json から `href` を全件取り出し、相対パスを解決して重複を除く。ページ数を記録し、前回からの増減（新設・削除）を先に特定する
+  ② 各ページの `<meta name="updated_at">` と `git_commit_id` を読み、前回の突合以降に動いたページを抜き出す。多数のページが同じ `git_commit_id` で動いたときは一括の再ビルドとして1行にまとめる
+  ③ 動いたページのうち、ダイジェストに掲載歴が無いものから本文を読む
+  ④ 状態ファイルの「docset 全件突合」節に、ページ数・突合した日・改訂されたページを残す。実施できなかった週は「YYYY-MM-DD スキップ（理由）」と書く
+
 ---
 
 ## メンテナンスノート
