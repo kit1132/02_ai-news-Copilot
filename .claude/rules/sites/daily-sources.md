@@ -133,7 +133,7 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 取得方法: WebFetch → WebSearch
 - 注目点: Power Automate固有の新機能（クラウドフロー、デスクトップフロー、Process Mining、Computer Use Agent）。月次更新記事あり
 - 頻度: 毎日確認
-- 備考: Power Platform Blogの子カテゴリ。JCB案件のPower Automate研修に直結する情報源
+- 備考: Power Platform Blogの子カテゴリ。業務研修（Power Automate）に直結する情報源
 
 ### Power Apps Blog
 - URL: https://www.microsoft.com/en-us/power-platform/blog/power-apps/
@@ -141,7 +141,7 @@ RSS URLの記載がないソースはRSS未提供。Cloudflare等のbot対策に
 - 取得方法: WebFetch → WebSearch
 - 注目点: Power Apps固有の新機能（モダンコントロール、コードアプリGA、vibe.powerapps.com（AIコードアプリビルダー、Public Preview）、MCP Server連携）。月次更新記事あり
 - 頻度: 毎日確認
-- 備考: Power Platform Blogの子カテゴリ。JCB案件のPower Apps研修に直結する情報源
+- 備考: Power Platform Blogの子カテゴリ。業務研修（Power Apps）に直結する情報源
 
 ### Microsoft 365 Developer Blog
 - URL: https://devblogs.microsoft.com/microsoft365dev/
