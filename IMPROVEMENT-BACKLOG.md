@@ -16,7 +16,7 @@
 ## 提案中
 
 ### B-080: Copilot Cowork の Learn ページが `copilot/cowork/` 配下へ恒久リダイレクトしている
-- 状態: 提案中 / 初出: 2026-10-27 / 最終確認: 2026-10-27 / 回数: 1
+- 状態: 提案中 / 初出: 2026-10-27 / 最終確認: 2026-10-28 / 回数: 2
 - 対象: `.claude/rules/sites/daily-sources.md`「Copilot Cowork（What's New・モデル・管理者統制）」の URL 6本、同「Learn 文書の週次突合」の目次 URL と備考「（`cowork/` を含む）」
 - 変更内容: (1) URL 6本を `https://learn.microsoft.com/en-us/copilot/cowork/<ページ名>` に差し替える。(2) 週次突合の目次に `https://learn.microsoft.com/en-us/copilot/cowork/toc.json`（2026-10-27 時点 26リンク）を3本目として加え、M365 Copilot の toc.json の備考から「`cowork/` を含む」を削る
 - 根拠: 2026-10-27 に `microsoft-365/copilot/cowork/` 配下の登録6ページすべてが HTTP 301 で `copilot/cowork/` へ転送されることを `curl` で確認した。M365 Copilot の toc.json に Cowork 関連で残っているのは `/copilot/cowork/` の1リンクだけである。転送先の `whats-new` は 10/24 01:03Z に `8d120c92`（`ms.date` 10/21・October 2026 節で Grok 4.7 / GPT 6.1 Sol / Projects を追加）へ改訂されていたが、10/24〜10/26 の状態ファイルは `48bc3a76`（`ms.date` 9/14）を「変化なし」と記録し続け、10/26 の週次突合も Cowork のページを数えていなかった。旧 URL で取得すると古い値が返る経路（Learn MCP では 301 が見えない。`fetch-flow.md`「恒久リダイレクト」節の落とし穴）と考えられる
