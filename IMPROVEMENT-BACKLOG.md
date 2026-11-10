@@ -16,7 +16,7 @@
 ## 提案中
 
 ### B-084: Web 検索の統制ページ `manage-public-web-access` が `copilot/plan/` 配下へ恒久リダイレクトしている
-- 状態: 提案中 / 初出: 2026-11-05 / 最終確認: 2026-11-09 / 回数: 5
+- 状態: 提案中 / 初出: 2026-11-05 / 最終確認: 2026-11-11 / 回数: 6
 - 対象: `.last-check-state.md`「Copilot の Web 検索統制と製品名（週1回の Learn 文書突合で追う）」節の追跡 URL と、`.last-check-state.md`「Web グラウンディングのドメイン除外（撤回・継続監視）」節の備考の URL
 - 変更内容: 追跡 URL を `https://learn.microsoft.com/en-us/microsoft-365/copilot/manage-public-web-access` から `https://learn.microsoft.com/en-us/copilot/plan/manage-public-web-access` に差し替え、`fetch-flow.md`「404 を検出したときの扱い」の「新しく記録する追跡ページは完全 URL で書く」に従って完全 URL で記録する。B-080（Cowork の `copilot/cowork/` への移設）と同じ `microsoft-365/copilot/` → `copilot/` の移設なので、週次突合（B-074）の目次に `copilot/plan/` 配下が載っているかを次回の突合（11/9）で確かめ、載っていれば `daily-sources.md`「Learn 文書の週次突合」の目次 URL に加える
 - 実例（2026-11-09・週次突合）: `daily-sources.md`「Learn 文書の週次突合」に登録された目次 `https://learn.microsoft.com/en-us/microsoft-365/copilot/toc.json` は HTTP 404 を返した（301 ではなく転送先が示されない）。同じ docset の目次は `https://learn.microsoft.com/en-us/copilot/toc.json`（「Microsoft Copilot Hub」・137リンク・`copilot/plan/` 配下23本と `manage-public-web-access` を含む）にある。目次 URL もこちらへ差し替える。`microsoft-365/copilot/release-notes` と `extensibility/` は旧パスのまま 200 で、目次からも旧パスでリンクされている
@@ -37,13 +37,13 @@
 - 根拠: 2026-11-02 の突合で M365 Copilot の toc.json は 138 リンクで、10/26 の記録（163）から25減っていたが、前回の一覧が残っていないため、どのページが目次から外れたかを特定できなかった。手順①の「前回からの増減（新設・削除）を先に特定する」は、一覧を保存しない限り実行できない。また目次には `/en-us/` 付きと無しの同じページが混在しており（11/2 は642件中1件が重複）、正規化しないと件数がぶれる
 
 ### B-081: Copilot Studio の GitHub Copilot ハーネスが Microsoft Copilot ハーネスに改名された
-- 状態: 提案中 / 初出: 2026-10-29 / 最終確認: 2026-11-10 / 回数: 13
+- 状態: 提案中 / 初出: 2026-10-29 / 最終確認: 2026-11-11 / 回数: 14
 - 対象: `.claude/rules/sites/daily-sources.md`「Copilot Studio ライセンス・課金」の URL 欄（`manage-usage-github-copilot-harness` の注記「GitHub Copilot ハーネスの課金統制」）と、「Copilot Studio モデル可用性一覧」の「URL（GitHub Copilot ハーネス）」
 - 変更内容: (1) 両節の「GitHub Copilot ハーネス」を「Microsoft Copilot ハーネス（旧 GitHub Copilot ハーネス、2026-10-28 改名）」に書き換える。(2) 「Copilot Studio ライセンス・課金」の備考に、`manage-usage-github-copilot-harness` など旧名を含む URL は改名で 301 / 404 になりうるため、その場合は `fetch-flow.md` の恒久リダイレクト・404 の手順で差し替える、と1文足す
 - 根拠: Copilot ブログ（2026-10-28）が改名を告知し、製品の表記は今後数週間で切り替わるとしている。Roadmap 576272 の題名は 10/28 20:19Z に新名へ変わった。一方 Learn は 10/29 時点で `agents-experience/overview` の題名・`manage-usage-github-copilot-harness` の URL とも旧名のままで、今後の改訂で URL が変わる可能性がある
 
 ### B-080: Copilot Cowork の Learn ページが `copilot/cowork/` 配下へ恒久リダイレクトしている
-- 状態: 提案中 / 初出: 2026-10-27 / 最終確認: 2026-11-10 / 回数: 15
+- 状態: 提案中 / 初出: 2026-10-27 / 最終確認: 2026-11-11 / 回数: 16
 - 対象: `.claude/rules/sites/daily-sources.md`「Copilot Cowork（What's New・モデル・管理者統制）」の URL 6本、同「Learn 文書の週次突合」の目次 URL と備考「（`cowork/` を含む）」
 - 変更内容: (1) URL 6本を `https://learn.microsoft.com/en-us/copilot/cowork/<ページ名>` に差し替える。(2) 週次突合の目次に `https://learn.microsoft.com/en-us/copilot/cowork/toc.json`（2026-10-27 時点 26リンク）を3本目として加え、M365 Copilot の toc.json の備考から「`cowork/` を含む」を削る
 - 根拠: 2026-10-27 に `microsoft-365/copilot/cowork/` 配下の登録6ページすべてが HTTP 301 で `copilot/cowork/` へ転送されることを `curl` で確認した。M365 Copilot の toc.json に Cowork 関連で残っているのは `/copilot/cowork/` の1リンクだけである。転送先の `whats-new` は 10/24 01:03Z に `8d120c92`（`ms.date` 10/21・October 2026 節で Grok 4.7 / GPT 6.1 Sol / Projects を追加）へ改訂されていたが、10/24〜10/26 の状態ファイルは `48bc3a76`（`ms.date` 9/14）を「変化なし」と記録し続け、10/26 の週次突合も Cowork のページを数えていなかった。旧 URL で取得すると古い値が返る経路（Learn MCP では 301 が見えない。`fetch-flow.md`「恒久リダイレクト」節の落とし穴）と考えられる
