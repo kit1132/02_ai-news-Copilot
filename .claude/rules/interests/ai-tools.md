@@ -40,6 +40,7 @@
 - **GitHub Copilot CLI のリリース・コーディング機能**（01_ai-news-Master の担当。組織導入・ライセンス・管理機能のみ本リポの対象）
 - 学術論文のみの発表（実装を伴わないもの）
 - 画像生成AI、音楽生成AI等のクリエイティブ系（趣味範囲では興味あり）
+  - **例外（2026-11-06 変更）**: Microsoft の画像生成（Copilot / Designer / MAI-Image / Copilot Credits の消費対象になる画像機能等）は対象にする。一次情報に出た新機能の公開、料金変更、退役を拾う。他社の画像生成は 01_ai-news-Master の担当
 - AIの倫理・規制の議論（大きな政策変更以外）
 - Dynamics 365固有のドメイン機能（Sales/Service/Finance等。Copilot Studio連携以外）
 - Azure AI Foundryの深い開発者向け機能（MLOpsパイプライン等。Copilot Studio連携以外）
