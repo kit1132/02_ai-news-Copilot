@@ -89,6 +89,19 @@ class CheckTextTest(unittest.TestCase):
         text = digest("## 分野\n", "- （ハイライト１参照）\n", "- ハイライト参照\n")
         self.assertEqual(mod.check_text(text, "digest"), [])
 
+    def test_invalid_tag_on_a_highlight_reference_is_still_skipped(self):
+        text = "\n".join(
+            [
+                "## 開発ツール",
+                "- [不明] （ハイライト1参照）",
+                "- [不明] （ハイライト１参照）",
+                "- [不明] ハイライト参照",
+                "- [不明] （ハイライト 12 参照）",
+                "- [不明] ハイライトの話",
+            ]
+        )
+        self.assertEqual(mod.check_text(text, "digest"), ["6: [不明] 11語以外"])
+
     def test_daily_category_requires_bold_heading(self):
         text = """## 今日のハイライト
 ### 1. [新機能] 題 — 含意
